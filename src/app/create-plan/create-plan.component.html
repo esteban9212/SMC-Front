@@ -1,0 +1,19 @@
+<p>
+  create-plan works!
+</p>
+
+<div>
+    <label>Programs</label>
+    <div >
+       <select class="form-control">
+         <option *ngFor="let program of programs | async" [value]="program.ID_PROGRAM" >  {{program.NAME_PROGRAM}}  </option>
+       </select>
+    </div>
+
+     <label>Outcomes</label>
+    <div >
+       <select class="form-control">
+         <option *ngFor="let outcome of outcomes " [value]="outcome.id" >  {{outcome.name}}  </option>
+       </select>
+    </div>
+</div>
