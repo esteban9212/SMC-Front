@@ -1,0 +1,19 @@
+export class OutcomeCycleAs {
+
+
+	ID_OUTCO_CYCLE:string;
+	MAIN_CYCLE_ID_CYCLE:string;
+	OUTCOME_ID_ST_OUTCOME:string;
+
+
+
+	constructor(ID_OUTCO_CYCLE:string, MAIN_CYCLE_ID_CYCLE:string,OUTCOME_ID_ST_OUTCOME:string) {
+		this.ID_OUTCO_CYCLE=ID_OUTCO_CYCLE;
+		this.MAIN_CYCLE_ID_CYCLE=MAIN_CYCLE_ID_CYCLE;
+		this.OUTCOME_ID_ST_OUTCOME=OUTCOME_ID_ST_OUTCOME;
+
+	}
+
+
+
+}

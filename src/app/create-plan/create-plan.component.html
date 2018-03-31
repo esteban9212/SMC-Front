@@ -3,17 +3,29 @@
 </p>
 
 <div>
-    <label>Programs</label>
-    <div >
-       <select class="form-control">
-         <option *ngFor="let program of programs | async" [value]="program.ID_PROGRAM" >  {{program.NAME_PROGRAM}}  </option>
+
+
+  <label>Programs</label>
+     <div >
+       <select [(ngModel)]="programSelected" (ngModelChange)="onChangeProgram($event)" class="form-control">
+         <option value="" disabled> Select a Program</option>
+         <option *ngFor="let program of programs | async" [value]="program.ID_PROGRAM" ng-change="selectChanged(program)" >  {{program.NAME_PROGRAM}}  </option>
        </select>
-    </div>
+     </div>
 
      <label>Outcomes</label>
-    <div >
-       <select class="form-control">
-         <option *ngFor="let outcome of outcomes " [value]="outcome.id" >  {{outcome.name}}  </option>
-       </select>
+     <div >
+       <select [(ngModel)]="outcomeSelected" (ngModelChange)="onChangeOutcome($event)" class="form-control">
+        <option value="" disabled> Select a Outcome</option>
+        <option *ngFor="let outcome of outcomes | async " [value]="outcome.ID_ST_OUTCOME" >  {{outcome.CRITERION}} - {{outcome.SHORT_DESCRIPTION}} - {{outcome.PROGRAM_ID_PROGRAM}}  </option>
+      </select>
     </div>
+
+     <input type="submit" class="btn light-blue" (click)="crearPlan()">
+
+
+  <form (ngSubmit)="onAddTask()">
+
+  </form>
+
 </div>
