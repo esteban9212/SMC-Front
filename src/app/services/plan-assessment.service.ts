@@ -10,16 +10,19 @@ import { PlanAssessment } from '../models/planAssessment';
 @Injectable()
 export class PlanAssessmentService {
 
+
+
+
 	constructor(private http:Http) {
 	 }
 
 
 
-	savePlan(idUserp,idOutcomeCycleAsp):Observable<PlanAssessment[]>{
+	savePlan(idUserp,idOutcomeCycleAsp):string{
 		console.log("dentro service: "+idUserp);
 		console.log("dentro service: "+idOutcomeCycleAsp);
 		console.log('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp);
-		return this.http.get('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp).map((response:Response)=> response.json());		
-	
+		this.http.get('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp).map((response:Response)=> response.json());		
+	return 'http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp;
 	}
 }
