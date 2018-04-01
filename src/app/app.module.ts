@@ -29,10 +29,12 @@ import { RouterModule,Routes } from '@angular/router';
     BrowserModule,
     HttpModule,
     FormsModule,
+    RouterModule,
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
-      {path:'search',component:SearchComponent}
+      {path:'search',component:SearchComponent},
+      {path:'**',pathMatch:'full',redirectTo:'home'}
       ])
   ],
   providers: [ProgramsService,OutcomeService,PlanAssessmentService,],
