@@ -4,7 +4,7 @@ import { ProgramsService } from './services/programs.service';
 import { OutcomeService } from './services/outcome.service';
 import { PlanAssessmentService } from './services/plan-assessment.service';
 import { HttpModule,Headers } from '@angular/http';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
+import { ListAssessmentComponent } from './list-assessment/list-assessment.component';
+//import {PopupModule} from 'ng2-opd-popup'
 
 
 
@@ -23,13 +25,16 @@ import { RouterModule,Routes } from '@angular/router';
     LoginComponent,
     CreatePlanComponent,
     HomeComponent,
-    SearchComponent
+    SearchComponent,
+    ListAssessmentComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     RouterModule,
+    NgxPaginationModule,
+//     PopupModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},

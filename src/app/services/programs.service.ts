@@ -22,6 +22,18 @@ export class ProgramsService {
 	getSubCycleActive(program):Observable<ParameterSmc>{
 		return this.http.get('http://127.0.0.1:8000/api/parameterCycle/'+program).map((response:Response)=> response.json());
 	}
+
+		savePlan(idUserp,idOutcomeCycleAsp):Observable<any>{
+		let myvar; 	
+		console.log("dentro service: "+idUserp);
+		console.log("dentro service: "+idOutcomeCycleAsp);
+		console.log('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp);
+		 
+		myvar = this.http.get('http://127.0.0.1:8000/api/savePlan/2813/74').map((response:Response)=> response.json());
+		console.dir(myvar);
+		return myvar; 
+		//return 'http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp;
+	}
 }
 
 

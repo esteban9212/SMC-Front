@@ -1,40 +1,37 @@
 
 <div class="componenteCrearPlan">
 
+  <form (ngSubmit)="crearPlan()">
 
-  <label>Select a Program</label>
-    
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Programs</label>
-  </div>
-  <select [(ngModel)]="programSelected" (ngModelChange)="onChangeProgram($event)" class="form-control">
+      <label>Select a Program</label>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Programs</label>
+        </div>
+        <select [(ngModel)]="programSelected" (ngModelChange)="onChangeProgram($event)" class="form-control" name="programSelected">
          <option value="" disabled> Select a Program</option>
          <option *ngFor="let program of programs | async" [value]="program.ID_PROGRAM" ng-change="selectChanged(program)" >  {{program.NAME_PROGRAM}}  </option>
        </select>
-</div>
+     </div>
 
 
-     <label>Select a Outcome</label>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Outcomes</label>
-  </div>
-    <select [(ngModel)]="outcomeSelected" (ngModelChange)="onChangeOutcome($event)" class="form-control">
+     <label>Select an Outcome</label>
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Outcomes</label>
+      </div>
+      <select [(ngModel)]="outcomeSelected" (ngModelChange)="onChangeOutcome($event)" class="form-control" name="outcomeSelected">
         <option value="" disabled> Select a Outcome</option>
         <option *ngFor="let outcome of outcomes | async " [value]="outcome.ID_ST_OUTCOME" >  {{outcome.CRITERION}} - {{outcome.SHORT_DESCRIPTION}} - {{outcome.PROGRAM_ID_PROGRAM}}  </option>
       </select>
-</div>
+    </div>
 
-     <input type="submit" class="btn light-blue" (click)="crearPlan()">
-<br><br>
-  <label>{{mensaje}}</label>
-  <form (ngSubmit)="onAddTask()">
-
+    <input type="submit" class="btn light-blue" >
   </form>
 
 </div>
-
+<app-search></app-search>
 
 
 

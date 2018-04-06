@@ -1,3 +1,18 @@
 <p>
-  search works!
+  listado de planes
 </p>
+
+<table class="table table-bordered table-hover table-sm ">
+  <tr>
+    <th scope="col" *ngFor="let col of columns">
+      {{col}}
+    </th>
+  </tr>
+  <tr scope="row" *ngFor="let char of characters | async ">
+    <td  *ngFor="let col of columns | paginate: itemsPerPage:10, currentPage: p">
+      {{char[col]}}
+    </td>
+  </tr>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</table>

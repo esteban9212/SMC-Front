@@ -3,6 +3,13 @@ import { Http,Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Rx';
 import { PlanAssessment } from '../models/planAssessment';
+import { catchError, map, tap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
+import { ProgramsService } from '../services/programs.service';
+import { OutcomeService } from '../services/outcome.service';
+import { Program } from '../models/program';
+import { Outcome } from '../models/outcome';
+import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 
 
 
@@ -13,16 +20,78 @@ export class PlanAssessmentService {
 
 
 
-	constructor(private http:Http) {
-	 }
 
-
-
-	savePlan(idUserp,idOutcomeCycleAsp):string{
+	savePlan(idUserp,idOutcomeCycleAsp):Observable<any>{	
 		console.log("dentro service: "+idUserp);
 		console.log("dentro service: "+idOutcomeCycleAsp);
 		console.log('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp);
-		this.http.get('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp).map((response:Response)=> response.json());		
-	return 'http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp;
-	}
+		return this.http.get('http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp).map((response:Response)=> response.json());
+		//return 'http://127.0.0.1:8000/api/savePlan/'+idUserp+'/'+idOutcomeCycleAsp;
+	} 
+
+/**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+private handleError<T> (operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    console.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
 }
+
+
+
+
+
+CHARACTERS: any[] =
+[
+  {
+    Nombre: 'Plan Assesment A',
+    Outcome: 'A',
+    Estado: 'Completed',
+    Lider: 'Norha'
+  },
+  {
+    Nombre: 'Plan Assesment B',
+    Outcome: 'B',
+    Estado: 'In process',
+    Lider: 'Reyes'
+  },
+  {
+    Nombre: 'Plan Assesment C',
+    Outcome: 'C',
+    Estado: 'Completed',
+    Lider: 'Munera'
+  },
+  {
+    Nombre: 'Plan Assesment D',
+    Outcome: 'D',
+    Estado: 'Completed', 
+    Lider: 'Pachon'
+  },
+]
+
+	constructor(private http:Http) {
+	 }
+
+	 
+getCharacters(): Observable<any[]>{
+  return this.http.get('http://127.0.0.1:8000/api/getPlansList').map((response:Response)=> response.json());
+
+}
+
+getColumns(): string[]{
+  return ["nombre", "lider", "programa", "estado","fechaCreacion", "autor"]};
+}
+
+
