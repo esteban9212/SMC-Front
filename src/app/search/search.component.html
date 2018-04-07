@@ -8,9 +8,9 @@
       {{col}}
     </th>
   </tr>
-  <tr scope="row" *ngFor="let char of characters | async ">
+  <tr scope="row" *ngFor="let plan of plans | async ">
     <td  *ngFor="let col of columns ">
-      {{char[col]}}
+      {{plan[col]}}
     </td>
   </tr>
 

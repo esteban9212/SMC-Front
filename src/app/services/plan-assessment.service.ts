@@ -48,50 +48,17 @@ private handleError<T> (operation = 'operation', result?: T) {
     return of(result as T);
   };
 }
-
-
-
-
-
-CHARACTERS: any[] =
-[
-  {
-    Nombre: 'Plan Assesment A',
-    Outcome: 'A',
-    Estado: 'Completed',
-    Lider: 'Norha'
-  },
-  {
-    Nombre: 'Plan Assesment B',
-    Outcome: 'B',
-    Estado: 'In process',
-    Lider: 'Reyes'
-  },
-  {
-    Nombre: 'Plan Assesment C',
-    Outcome: 'C',
-    Estado: 'Completed',
-    Lider: 'Munera'
-  },
-  {
-    Nombre: 'Plan Assesment D',
-    Outcome: 'D',
-    Estado: 'Completed', 
-    Lider: 'Pachon'
-  },
-]
-
 	constructor(private http:Http) {
 	 }
 
 	 
-getCharacters(): Observable<any[]>{
+getPlans(): Observable<any[]>{
   return this.http.get('http://127.0.0.1:8000/api/getPlansList').map((response:Response)=> response.json());
 
 }
 
 getColumns(): string[]{
-  return ["Id plan","Nombre", "Líder", "Programa", "Estado","Fecha Creación", "Autor"]};
+  return ["Idplan","Name", "Leader", "Program", "State","DateCreation", "Author"]};
 }
 
 

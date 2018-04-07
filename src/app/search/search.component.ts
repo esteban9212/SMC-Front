@@ -7,6 +7,7 @@ import { Outcome } from '../models/outcome';
 import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 import { ParameterSmc } from '../models/parameterSmc';
 import { PlanAssessment } from '../models/planAssessment';
+
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -17,7 +18,8 @@ import { Observable } from 'rxjs/Rx';
 export class SearchComponent implements OnInit {
 
 
-characters: Observable<any[]>;
+plans: Observable<any[]>;
+
 columns: string[];
 
 
@@ -27,8 +29,8 @@ columns: string[];
 
   this.columns = this.planAssessmentService.getColumns(); 
   //["name", "age", "species", "occupation"]
-  this.characters = this.planAssessmentService.getCharacters();
-  //all data in mock-data.ts
+  this.plans = this.planAssessmentService.getPlans();
+
 
   }
 
