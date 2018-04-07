@@ -33,7 +33,6 @@ import { ListAssessmentComponent } from './list-assessment/list-assessment.compo
     HttpModule,
     FormsModule,
     RouterModule,
-    NgxPaginationModule,
 //     PopupModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},

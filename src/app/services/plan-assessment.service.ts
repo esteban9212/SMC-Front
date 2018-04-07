@@ -91,7 +91,7 @@ getCharacters(): Observable<any[]>{
 }
 
 getColumns(): string[]{
-  return ["nombre", "lider", "programa", "estado","fechaCreacion", "autor"]};
+  return ["Id plan","Nombre", "Líder", "Programa", "Estado","Fecha Creación", "Autor"]};
 }
 
 

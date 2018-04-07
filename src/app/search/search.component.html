@@ -9,10 +9,9 @@
     </th>
   </tr>
   <tr scope="row" *ngFor="let char of characters | async ">
-    <td  *ngFor="let col of columns | paginate: itemsPerPage:10, currentPage: p">
+    <td  *ngFor="let col of columns ">
       {{char[col]}}
     </td>
   </tr>
 
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </table>
