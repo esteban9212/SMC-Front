@@ -14,6 +14,12 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
 import { ListAssessmentComponent } from './list-assessment/list-assessment.component';
+import {DataTableModule} from "angular2-datatable";
+import { PruebatablaComponent } from './pruebatabla/pruebatabla.component';
+import { DataFilterPipe } from './pipes/data-filter.pipe';
+import { ChartsModule } from 'ng2-charts';
+import { TortaComponent } from './torta/torta.component';
+import { TortaBackComponent } from './torta-back/torta-back.component';
 //import {PopupModule} from 'ng2-opd-popup'
 
 
@@ -26,13 +32,19 @@ import { ListAssessmentComponent } from './list-assessment/list-assessment.compo
     CreatePlanComponent,
     HomeComponent,
     SearchComponent,
-    ListAssessmentComponent
+    ListAssessmentComponent,
+    PruebatablaComponent,
+    DataFilterPipe,
+    TortaComponent,
+    TortaBackComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     RouterModule,
+    DataTableModule,
+    ChartsModule,
 //     PopupModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},

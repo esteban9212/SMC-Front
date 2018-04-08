@@ -1,0 +1,73 @@
+<div class="col-md-12">
+	
+	<table
+	class="table table-striped"
+	[mfData]="data | dataFilter : filterQuery"
+	#mf="mfDataTable"
+	[mfRowsOnPage]="rowsOnPage"
+	[(mfSortBy)]="sortBy"
+	[(mfSortOrder)]="sortOrder"
+	>
+	<thead>
+		<tr class="padre text-center">
+			<th colspan="5">
+				Filter by Leader:
+				<input class="form-control" [(ngModel)]="filterQuery"/>
+			</th>
+		</tr>
+		
+		<tr>
+			<th style="width: 2%">
+				<mfDefaultSorter by="name">#</mfDefaultSorter>
+			</th>
+			<th style="width: 15%">
+				<mfDefaultSorter by="email">Name Plan</mfDefaultSorter>
+			</th>
+			<th style="width: 5%">
+				<mfDefaultSorter by="email">Cycle</mfDefaultSorter>
+			</th>
+			<th style="width: 5%">
+				<mfDefaultSorter by="email">Sub Cycle</mfDefaultSorter>
+			</th>
+			<th style="width: 20%">
+				<mfDefaultSorter by="city">Program</mfDefaultSorter>
+			</th>
+			<th style="width: 15%">
+				<mfDefaultSorter by="age">Leader</mfDefaultSorter>
+			</th>
+			<th style="width: 10%">
+				<mfDefaultSorter by="city">State</mfDefaultSorter>
+			</th>
+			<th style="width: 5%">
+				<mfDefaultSorter by="city">Creation Date</mfDefaultSorter>
+			</th>
+			<th style="width: 20%">
+				<mfDefaultSorter by="city">Author</mfDefaultSorter>
+			</th>
+		</tr>
+		
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of mf.data">
+			<td class="text-right">{{item.Idplan}}</td>
+			<td>{{item.Name | uppercase}}</td>
+			<td class="text-center">{{item.Ciclo}}</td>
+			<td class="text-center">{{item.SubCiclo}}</td>
+			<td>{{item.Program}}</td>
+			<td>{{item.Leader}}</td>
+			<td>{{item.State}}</td>
+			<td>{{item.DateCreation}}</td>
+			<td>{{item.Author}}</td>
+			
+		</tr>
+
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="40">
+				<mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+</div>

@@ -1,0 +1,15 @@
+#izq{
+float:left;
+width: 50%
+}
+#der{
+float:right;
+width: 50%;
+}
+.home{
+	display: flex;
+}
+
+h1.text-center.h1 {
+    margin-top: 15px;
+}

@@ -1,0 +1,6 @@
+.padre{
+	text-align: center;
+}
+li.page-item.active {
+    background: red;
+}

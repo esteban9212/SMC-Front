@@ -1,4 +1,6 @@
+<div class="padre">
 
+    <h4>to create a plan please select a program and then an outcome from which you are assigned</h4>
 <div class="componenteCrearPlan">
 
   <form (ngSubmit)="crearPlan()">
@@ -15,7 +17,6 @@
        </select>
      </div>
 
-
      <label>Select an Outcome</label>
      <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -26,12 +27,15 @@
         <option *ngFor="let outcome of outcomes | async " [value]="outcome.ID_ST_OUTCOME" >  {{outcome.CRITERION}} - {{outcome.SHORT_DESCRIPTION}} - {{outcome.PROGRAM_ID_PROGRAM}}  </option>
       </select>
     </div>
-
-    <input type="submit" class="btn light-blue" >
+    <div class="padre">
+        <input type="submit" class="btn light-blue boton" value="Save" >
+      
+    </div>
   </form>
 
+  </div>
 </div>
-<app-search></app-search>
+<app-pruebatabla></app-pruebatabla>
 
 
 

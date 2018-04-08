@@ -1,26 +1,98 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="fondo">
+
+  <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light navbar-default">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item" routerLinkActive="active">
+          <a title="Universidad Icesi" href="http://www.icesi.edu.co"><img src="http://www.icesi.edu.co/images/logo.png" alt="Los Tejos" /></a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/home">Home </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/create">Create Assessment</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/search">Search Assessment</a>
+        </li>
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false">User Name</a>
+      </form>
+
+    </div>
+
+  </nav>
+
+</div>
+<div class="menu-espacio">
+  
+</div>
+
+<!--Contenido-->
+<router-outlet></router-outlet>
+
+<!--Footer-->
+<footer class="page-footer font-small blue pt-4 mt-4 bg-light">
+
+  <div class="container-fluid text-center text-md-left">
+    <div class="row">
+
+      <!--First column-->
+      <div class="col-md-6">
+        <a title="Universidad Icesi" href="http://www.icesi.edu.co"><img src="http://www.icesi.edu.co/images/logo.png" alt="Los Tejos" /></a>
+        <ul class="list-unstyled">
+
+          <li>
+           <h5>Documentation</h5>
+          </li>
+
+          <li>
+            <a class="linkFooter" href="https://github.com/esteban9212/SMC-Front">FrontEnd : Angular 4</a>
+          </li>
+          <li>
+             <a class="linkFooter" href="https://github.com/esteban9212/SMC">BackEnd : Laravel 5.4</a>
+          </li>
 
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Home </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/create">Create Assessment</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/search">Search Assessment</a>
-      </li>
-    </ul>
+        </ul>
+      </div>
+       <!--Second column-->
+      <div class="col-md-6">
 
-    <form class="form-inline my-2 my-lg-0">
-      <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" 
-      aria-haspopup="true" aria-expanded="false">User Name</a>
-    </form>
+       <ul class="list-unstyled">
+
+        <li>
+           <h3>Developers</h3>
+          </li>
+        <li>
+          <a href="https://github.com/esteban9212">Esteban Aguirre</a>
+          <h5>System Software Engineer</h5>
+        </li>
+        <li>
+           <a href="https://github.com/JnCV17">Juan Camilo Villada</a>
+          <h5>System Software Engineer</h5>
+        </li>
+
+
+      </ul>
+    </div>
+
 
   </div>
+</div>
 
-</nav>
+<!--Copyright-->
+<div class="footer-copyright py-3 text-center">Copyright © 2018:
+  <a href="http://www.icesi.edu.co"> icesi.edu.co </a>
+</div>
+<!--/.Copyright-->
 
-<router-outlet></router-outlet>
+</footer>
+<!--/.Footer-->
+
