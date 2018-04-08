@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProgramsService } from './services/programs.service';
 import { OutcomeService } from './services/outcome.service';
+import { UserService } from './services/user.service';
 import { PlanAssessmentService } from './services/plan-assessment.service';
 import { HttpModule,Headers } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -53,7 +54,7 @@ import { TortaBackComponent } from './torta-back/torta-back.component';
       {path:'**',pathMatch:'full',redirectTo:'home'}
       ])
   ],
-  providers: [ProgramsService,OutcomeService,PlanAssessmentService,],
+  providers: [ProgramsService,OutcomeService,PlanAssessmentService,UserService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

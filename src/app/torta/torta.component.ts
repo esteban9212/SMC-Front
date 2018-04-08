@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class TortaComponent {
 
   // Doughnut
-  public doughnutChartLabels:string[] = ['CSS 0.5%','TypeScript 80%', 'HTML 14.2 %', 'JavasScript 5.3%'];
-  public doughnutChartData:number[] = [0.5 ,80, 14.2,5.3];
+  public doughnutChartLabels:string[] = ['CSS4.1%','TypeScript 69%', 'HTML 22.1%', 'JavasScript 3.9%'];
+  public doughnutChartData:number[] = [4.1 ,69, 22.1,3.9];
   public doughnutChartType:string = 'doughnut';
  
   // events

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs/Rx';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+
+	user1:Observable<User>
+	user:User;
+
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
+
+  	this.user1=this.userService.getUser('2813');
+
+		this.user1.subscribe(us=>{
+			this.user=us;
+		});
   }
 
 }

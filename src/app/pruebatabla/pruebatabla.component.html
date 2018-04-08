@@ -1,5 +1,13 @@
-<div class="col-md-12">
+<div class="col-md-12 tabla">
 	
+
+
+	<tr class="padre text-center">
+			<th colspan="5">
+				Filter by Leader:
+				<input class="form-control" [(ngModel)]="filterQuery"/>
+			</th>
+		</tr>
 	<table
 	class="table table-striped"
 	[mfData]="data | dataFilter : filterQuery"
@@ -9,14 +17,10 @@
 	[(mfSortOrder)]="sortOrder"
 	>
 	<thead>
-		<tr class="padre text-center">
-			<th colspan="5">
-				Filter by Leader:
-				<input class="form-control" [(ngModel)]="filterQuery"/>
-			</th>
-		</tr>
+		
 		
 		<tr>
+			
 			<th style="width: 2%">
 				<mfDefaultSorter by="name">#</mfDefaultSorter>
 			</th>
