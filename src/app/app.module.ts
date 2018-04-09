@@ -26,6 +26,7 @@ import { SigninComponent } from './signin/signin.component';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 //import {PopupModule} from 'ng2-opd-popup'
 
 
@@ -54,6 +55,7 @@ import { AuthService } from './services/auth.service';
     RouterModule,
     DataTableModule,
     ChartsModule,
+    AngularFontAwesomeModule,
 //     PopupModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},

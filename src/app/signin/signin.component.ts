@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit{
 
   constructor(private authService: AuthService, private router: Router) { }
 

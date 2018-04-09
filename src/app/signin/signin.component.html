@@ -1,9 +1,10 @@
-
-  <div class="wrapper">
+<div class="wrapper">
     <form class="form-signin" (ngSubmit)="onSignin(f)" #f="ngForm">       
-      <h2 class="form-signin-heading">Welcome</h2>
-        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" autofocus="" />
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required=""/>      
+      <h2 class="form-signin-heading">SMC Login</h2>
+        <input type="text" class="form-control" id="username" name="username" placeholder="&#xFf007;   Username" required="" autofocus="" style="text-align: center; font-family:Arial, FontAwesome"/>
+        <input type="password" class="form-control" id="password" name="password" placeholder="&#xFf023;   Password" required="" style="text-align: center; font-family:Arial, FontAwesome;"/>
         <button class="btn btn-lg btn-primary btn-block" [disabled]="!f.valid" type="submit">Sign in</button>   
     </form>
   </div>
+
+ 
