@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProgramsService } from '../services/programs.service';
 import { OutcomeService } from '../services/outcome.service';
+import { UserService } from '../services/user.service';
 import { PlanAssessmentService } from '../services/plan-assessment.service';
 import { Program } from '../models/program';
 import { Outcome } from '../models/outcome';
 import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 import { ParameterSmc } from '../models/parameterSmc';
 import { PlanAssessment } from '../models/planAssessment';
-import { Observable } from 'rxjs/Rx';77
+import { Observable } from 'rxjs/Rx';
+import { User } from '../models/user';
 //Simport {Popup} from 'ng2-opd-popup';
 
 @Component({
@@ -31,7 +33,8 @@ export class CreatePlanComponent implements OnInit {
 	plans:Observable<PlanAssessment[]>;
 	programSelected:any;
 	outcomeSelected:any;
-	user:string;
+	user1:Observable<User>
+	user:User;
 	mensaje:string
 
 	plan:Observable<any>; 
@@ -40,20 +43,27 @@ export class CreatePlanComponent implements OnInit {
 	outcomecambiado:Observable<Outcome>;
 	outcomecambiado2:any;
 
-	constructor(private programsService:ProgramsService,private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService) {
+	constructor(private userService:UserService,private programsService:ProgramsService,
+		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService) {
 		
 	}
 
 	ngOnInit(): void {
 		this.programs= this.programsService.getPrograms();
+		this.user1=this.userService.getUser('2813');
+
+		this.user1.subscribe(us=>{
+			this.user=us;
+		});
 	}
 
 	onChangeProgram(newValue) {
 		this.programSelected = newValue;
 		this.subCycle =this.programsService.getSubCycleActive(newValue);
-		this.user='2813';
+		
 
-		this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user,newValue);
+		console.log(this.user);
+		this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user.ID_USER,newValue);
 		
 		this.subCycle.subscribe(cycle=>{
 			this.subCycle2=cycle;
@@ -86,7 +96,7 @@ export class CreatePlanComponent implements OnInit {
 		console.log("outcome cycle : " + "buscar id");
 
 		
-		this.plan = this.planAssessmentService.savePlan(this.user,this.OutcomeCycleAs2.ID_OUTCO_CYCLE);
+		this.plan = this.planAssessmentService.savePlan(this.user.ID_USER,this.OutcomeCycleAs2.ID_OUTCO_CYCLE);
 		this.plan.subscribe(prueba=>{
 			this.plan2 = prueba;
 		});

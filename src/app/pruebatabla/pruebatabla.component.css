@@ -4,3 +4,6 @@
 li.page-item.active {
     background: red;
 }
+.col-md-12.tabla {
+    display: inline-table;
+}

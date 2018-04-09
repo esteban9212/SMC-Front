@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProgramsService } from './services/programs.service';
 import { OutcomeService } from './services/outcome.service';
+import { UserService } from './services/user.service';
 import { PlanAssessmentService } from './services/plan-assessment.service';
 import { Headers } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -63,7 +64,7 @@ import { AuthService } from './services/auth.service';
       {path:'**',pathMatch:'full',redirectTo:'signin'}
       ])
   ],
-  providers: [ProgramsService,OutcomeService,PlanAssessmentService,AuthService,],
+  providers: [ProgramsService,OutcomeService,PlanAssessmentService,UserService,AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
