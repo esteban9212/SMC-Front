@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/auth.service";
 import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -10,7 +11,7 @@ import { NgForm } from "@angular/forms";
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,16 @@ export class SigninComponent implements OnInit {
   		tokenData => console.log(tokenData),
   		error => console.log(error)
   		);
+
+	var tokenData = localStorage.getItem('token');
+
+  	if (tokenData == null){
+    
+	}else{
+		this.router.navigate(['/home']);
+	}  
+
+
   }
 
 }
