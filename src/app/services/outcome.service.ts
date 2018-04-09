@@ -19,6 +19,9 @@ export class OutcomeService {
 		return this.http.get('http://127.0.0.1:8000/api/outcomeCycleAsByOutcomeCycle/'+idOutcome+'/'+idCycle).map((response:Response)=> response.json());
 	}
 
+    outcomeByProgram(idProgram):Observable<Outcome[]>{
+		return this.http.get('http://127.0.0.1:8000/api/outcomesByProgram/'+idProgram).map((response:Response)=> response.json());
+	}
 	changeStateOutcomeToCreated(idOutcome):Observable<Outcome>{
 		return this.http.get('http://127.0.0.1:8000/api/changeStateOutcomeToCreated/'+idOutcome).map((response:Response)=> response.json());
 	}
