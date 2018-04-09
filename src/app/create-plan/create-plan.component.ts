@@ -54,13 +54,13 @@ idrol:string;
 
 	ngOnInit(): void {
 		this.programs= this.programsService.getPrograms();
-		this.user1=this.userService.getUser('5000');
+		this.user1=this.userService.getUser('2813');
 
 		this.user1.subscribe(us=>{
 			this.user=us;
 		});
 
-		this.roles1=this.userService.getRolsByUser('5000');
+		this.roles1=this.userService.getRolsByUser('2813');
 		this.roles1.subscribe(rols=>{
 			this.roles2=rols;
 		});
