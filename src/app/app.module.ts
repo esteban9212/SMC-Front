@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ProgramsService } from './services/programs.service';
 import { OutcomeService } from './services/outcome.service';
 import { PlanAssessmentService } from './services/plan-assessment.service';
-import { HttpModule,Headers } from '@angular/http';
+import { Headers } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -20,6 +20,11 @@ import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { TortaComponent } from './torta/torta.component';
 import { TortaBackComponent } from './torta-back/torta-back.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
+import { Http, HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 //import {PopupModule} from 'ng2-opd-popup'
 
 
@@ -36,11 +41,14 @@ import { TortaBackComponent } from './torta-back/torta-back.component';
     PruebatablaComponent,
     DataFilterPipe,
     TortaComponent,
-    TortaBackComponent
+    TortaBackComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     FormsModule,
     RouterModule,
     DataTableModule,
@@ -50,10 +58,12 @@ import { TortaBackComponent } from './torta-back/torta-back.component';
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
       {path:'search',component:SearchComponent},
-      {path:'**',pathMatch:'full',redirectTo:'home'}
+      {path:'signin',component:SigninComponent},
+      {path:'signup',component:SignupComponent},
+      {path:'**',pathMatch:'full',redirectTo:'signin'}
       ])
   ],
-  providers: [ProgramsService,OutcomeService,PlanAssessmentService,],
+  providers: [ProgramsService,OutcomeService,PlanAssessmentService,AuthService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

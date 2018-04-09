@@ -1,0 +1,49 @@
+.bg-light {
+    background-color: #00599C!important;
+     color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+        font-size: x-large;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+        font-size: x-large;
+}
+
+*, ::after, ::before {
+     box-sizing: none;
+}
+
+a.nav-link:hover {
+      background: #004E9B ;
+    width: -webkit-fill-available;
+    height: 64px;
+}
+a.linkFooter {
+    font-size: initial;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    margin-right: 15px;
+}
+
+.menu-espacio {
+    height: 78px;
+}
+
+
+a.nav-link:focus {
+
+    text-decoration: underline;
+}
+div>ul>li>h5 {
+    margin-top: 15px;
+}
