@@ -8,6 +8,7 @@ import { Outcome } from '../models/outcome';
 import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 import { ParameterSmc } from '../models/parameterSmc';
 import { PlanAssessment } from '../models/planAssessment';
+import { Rol } from '../models/rol';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
 //Simport {Popup} from 'ng2-opd-popup';
@@ -23,6 +24,9 @@ export class CreatePlanComponent implements OnInit {
 	programs:Observable<Program[]>;
 	outcomes:Observable<Outcome[]>;
 
+	roles1:Observable<Rol[]>;
+	roles2:Rol[];
+
 
 	subCycle:Observable<ParameterSmc>
 	subCycle2:ParameterSmc;
@@ -35,14 +39,14 @@ export class CreatePlanComponent implements OnInit {
 	outcomeSelected:any;
 	user1:Observable<User>
 	user:User;
-	mensaje:string
+
 
 	plan:Observable<any>; 
 	plan2:any;
 
 	outcomecambiado:Observable<Outcome>;
 	outcomecambiado2:any;
-
+idrol:string;
 	constructor(private userService:UserService,private programsService:ProgramsService,
 		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService) {
 		
@@ -50,20 +54,48 @@ export class CreatePlanComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.programs= this.programsService.getPrograms();
-		this.user1=this.userService.getUser('2813');
+		this.user1=this.userService.getUser('5000');
 
 		this.user1.subscribe(us=>{
 			this.user=us;
 		});
+
+		this.roles1=this.userService.getRolsByUser('5000');
+		this.roles1.subscribe(rols=>{
+			this.roles2=rols;
+		});
+
+	//	for (var i = this.roles2.length - 1; i >= 0; i--) {
+	//		this.idrol=this.roles2[i].ROLE_CIP_ID_ROLE;
+	//	}
+
 	}
 
 	onChangeProgram(newValue) {
 		this.programSelected = newValue;
 		this.subCycle =this.programsService.getSubCycleActive(newValue);
+	
 		
 
 		console.log(this.user);
-		this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user.ID_USER,newValue);
+		for (var i = this.roles2.length - 1; i >= 0; i--) {
+			this.idrol=this.roles2[i].ROLE_CIP_ID_ROLE;
+
+			if (this.idrol=='1') {
+				this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user.ID_USER,newValue);
+				console.log('Outcome Leader');
+			}
+			if (this.idrol=='4') {
+				this.outcomes=null;
+				console.log('Professor');
+			}
+			if (this.idrol=='2') {
+
+				this.outcomes= this.outcomeService.outcomeByProgram(newValue);
+				console.log('Program Director');
+			}
+		}
+	
 		
 		this.subCycle.subscribe(cycle=>{
 			this.subCycle2=cycle;
