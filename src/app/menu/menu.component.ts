@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { AuthService } from "../services/auth.service";
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
 
@@ -12,11 +13,14 @@ export class MenuComponent implements OnInit {
 
 
 	user1:Observable<User>
+  user2:Observable<User>
 	user:User;
 
-  constructor(private userService:UserService) { }
+  constructor(private authService: AuthService, private userService:UserService) { }
 
   ngOnInit() {
+
+    this.user2=this.authService.me();
 
   	this.user1=this.userService.getUser('2813');
 

@@ -11,6 +11,7 @@ import { PlanAssessment } from '../models/planAssessment';
 import { Rol } from '../models/rol';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
+import { Router } from "@angular/router";
 //Simport {Popup} from 'ng2-opd-popup';
 
 @Component({
@@ -48,11 +49,18 @@ export class CreatePlanComponent implements OnInit {
 	outcomecambiado2:any;
 idrol:string;
 	constructor(private userService:UserService,private programsService:ProgramsService,
-		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService) {
+		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService, private router: Router) {
 		
 	}
 
 	ngOnInit(): void {
+		  var tokenData = localStorage.getItem('token');
+
+  			if (tokenData == null){
+  				this.router.navigate(['/signin']);
+			}
+  			
+
 		this.programs= this.programsService.getPrograms();
 		this.user1=this.userService.getUser('2813');
 
