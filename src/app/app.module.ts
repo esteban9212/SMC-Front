@@ -26,6 +26,8 @@ import { SigninComponent } from './signin/signin.component';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { PlanInfoComponent } from './plan-info/plan-info.component';
+import { CdioRowComponent } from './cdio-row/cdio-row.component';
 //import {PopupModule} from 'ng2-opd-popup'
 
 
@@ -44,7 +46,9 @@ import { AuthService } from './services/auth.service';
     TortaComponent,
     TortaBackComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    PlanInfoComponent,
+    CdioRowComponent
   ],
   imports: [
     BrowserModule,

@@ -35,8 +35,8 @@ export class PlanAssessmentService {
  * @param operation - name of the operation that failed
  * @param result - optional value to return as the observable result
  */
-private handleError<T> (operation = 'operation', result?: T) {
-  return (error: any): Observable<T> => {
+ private handleError<T> (operation = 'operation', result?: T) {
+ 	return (error: any): Observable<T> => {
 
     // TODO: send the error to remote logging infrastructure
     console.error(error); // log to console instead
@@ -46,19 +46,42 @@ private handleError<T> (operation = 'operation', result?: T) {
 
     // Let the app keep running by returning an empty result.
     return of(result as T);
-  };
+};
 }
-	constructor(private http:Http) {
-	 }
+constructor(private http:Http) {
+}
 
-	 
+
 getPlans(): Observable<any[]>{
-  return this.http.get('http://127.0.0.1:8000/api/getPlansList').map((response:Response)=> response.json());
+	return this.http.get('http://127.0.0.1:8000/api/getPlansList').map((response:Response)=> response.json());
 
 }
 
 getColumns(): string[]{
-  return ["Idplan","Name", "Leader", "Program", "State","DateCreation", "Author"]};
+	return ["Idplan","Name", "Leader", "Program", "State","DateCreation", "Author"];
 }
+
+
+
+getPiByPlanId(idplan): Observable<any[]>{
+	return this.http.get('http://127.0.0.1:8000/api/getPisByPlanId/'+idplan).map((response:Response)=> response.json());
+
+}
+
+
+
+getCdioByPiId(idPi): Observable<any[]>{
+	return this.http.get('http://127.0.0.1:8000/api/getCdioByPiId/'+idPi).map((response:Response)=> response.json());
+
+}
+getMappingCourses(idPi): Observable<any[]>{
+	return this.http.get('http://127.0.0.1:8000/api/getCurricularMappinCDIOOutcome/'+idPi).map((response:Response)=> response.json());
+
+}
+
+
+}
+
+
 
 

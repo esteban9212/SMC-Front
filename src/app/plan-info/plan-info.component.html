@@ -1,0 +1,74 @@
+	<form>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-2 col-form-label">Program Outcome:</label>
+			<div class="col-sm-10">
+				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{description}}>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-2 col-form-label">Criteria (A-K):</label>
+			<div class="col-sm-10">
+				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{outcome}}>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="staticEmail" class="col-sm-2 col-form-label">Leader:</label>
+			<div class="col-sm-10">
+				<input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{leader}}>
+			</div>
+		</div>
+
+	</form>
+
+	<table class="table table-bordered table-hover table-sm ">
+
+		<thead>
+			<tr>
+				<th style="width: 15%">
+					Performance Indicator
+				</th>
+				<th style="width: 10%">
+					CDIO level
+				</th>
+				<th style="width: 15%">
+					Curricular mapping
+				</th>
+				<th style="width: 10%">
+					source of assessment
+				</th>
+				<th style="width: 15%">
+					assessment method
+				</th>
+				<th style="width: 10%">
+					date of data collection
+				</th>
+				<th style="width: 5%">
+					person in charge
+				</th>
+				<th style="width: 5%">
+					date of evaluation
+				</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of pis">
+				<td class="text-right">{{item.CODE}} {{item.DESCRIPTION}}</td>
+
+				<app-cdio-row [Pi]=item></app-cdio-row>
+
+			<td class="text-right">
+				<ul>
+					<li *ngFor="let item of getCourses(item.ID_PI)">
+						{{item.NAME_COURSE}}
+					</li>
+
+				</ul>
+			</td>
+
+
+			</tr>
+
+		</tbody>
+
+	</table>

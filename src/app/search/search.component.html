@@ -1,17 +1,5 @@
-<p>
-  listado de planes
-</p>
 
-<table class="table table-bordered table-hover table-sm ">
-  <tr>
-    <th scope="col" *ngFor="let col of columns">
-      {{col}}
-    </th>
-  </tr>
-  <tr scope="row" *ngFor="let plan of plans | async ">
-    <td  *ngFor="let col of columns ">
-      {{plan[col]}}
-    </td>
-  </tr>
 
-</table>
+<app-plan-info></app-plan-info>
+
+
