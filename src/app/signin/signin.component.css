@@ -1,49 +1,48 @@
-.bg-light {
-    background-color: #00599C!important;
-     color: white;
+.wrapper {  
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #2E86C1; 
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: white;
-        font-size: x-large;
-}
+.form-signin {
+      
+  margin: auto;
+  max-width: 380px;
 
-a {
-    color: white;
-    text-decoration: none;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-        font-size: x-large;
-}
+     position: absolute;
+       left:50%;
+        top:50%;
+  transform: translate(-50%, -50%);
+  
+  padding: 15px 35px 45px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
 
-*, ::after, ::before {
-     box-sizing: none;
-}
+    .form-control {
+          -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+      position: relative;
+      font-size: 16px;
+      height: auto;
+      padding: 10px;
+        @include box-sizing(border-box);
 
-a.nav-link:hover {
-      background: #004E9B ;
-    width: -webkit-fill-available;
-    height: 64px;
-}
-a.linkFooter {
-    font-size: initial;
-}
+        &:focus {
+          z-index: 2;
+        }
+    }
 
-img {
-    vertical-align: middle;
-    border-style: none;
-    margin-right: 15px;
-}
+    input[type="text"] {
+      margin-bottom: -1px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-.menu-espacio {
-    height: 78px;
-}
-
-
-a.nav-link:focus {
-
-    text-decoration: underline;
-}
-div>ul>li>h5 {
-    margin-top: 15px;
+    input[type="password"] {
+      margin-bottom: 20px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
 }

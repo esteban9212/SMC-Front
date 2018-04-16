@@ -26,8 +26,12 @@ import { SigninComponent } from './signin/signin.component';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+<<<<<<< HEAD
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { CdioRowComponent } from './cdio-row/cdio-row.component';
+=======
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+>>>>>>> 53a737bd4e5b4e6a3614608d421705d7d22fc2cb
 //import {PopupModule} from 'ng2-opd-popup'
 
 
@@ -58,6 +62,7 @@ import { CdioRowComponent } from './cdio-row/cdio-row.component';
     RouterModule,
     DataTableModule,
     ChartsModule,
+    AngularFontAwesomeModule,
 //     PopupModule.forRoot(),
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
