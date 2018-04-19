@@ -19,25 +19,24 @@ import { Observable } from 'rxjs/Rx';
 export class SearchComponent implements OnInit {
 
 
-plans: Observable<any[]>;
+  plans: Observable<any[]>;
 
-columns: string[];
+  columns: string[];
 
 
-  constructor(private planAssessmentService:PlanAssessmentService, private router: Router) { }
+  constructor(private planAssessmentService:PlanAssessmentService, private router: Router) {
+
+  }
 
   ngOnInit() {
-  			  var tokenData = localStorage.getItem('token');
-
-  			if (tokenData == null){
-  				this.router.navigate(['/signin']);
-			}
 
   this.columns = this.planAssessmentService.getColumns(); 
   //["name", "age", "species", "occupation"]
   this.plans = this.planAssessmentService.getPlans();
 
+			}
+
 
   }
 
-}
+

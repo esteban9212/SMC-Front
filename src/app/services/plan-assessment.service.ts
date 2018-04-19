@@ -79,6 +79,11 @@ getMappingCourses(idPi): Observable<any[]>{
 
 }
 
+getAssessmentCoursesByPi(idPi): Observable<any[]>{
+	return this.http.get('http://127.0.0.1:8000/api/assessmentSourceByPi/'+idPi).map((response:Response)=> response.json());
+
+}
+
 
 }
 
