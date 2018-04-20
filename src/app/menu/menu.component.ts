@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from "../services/auth.service";
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
+import { UserLogin } from '../models/userLogin';
 
 @Component({
   selector: 'app-menu',
@@ -10,23 +11,19 @@ import { User } from '../models/user';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  
+  user1:Observable<User>
+  user:User;
 
-
-	user1:Observable<User>
-  user2:Observable<User>
-	user:User;
-
-  constructor(private authService: AuthService, private userService:UserService) { }
+  constructor(private userService:UserService) { }
 
   ngOnInit() {
 
-    this.user2=this.authService.me();
+    this.user1=this.userService.getUser('2813');
 
-  	this.user1=this.userService.getUser('2813');
-
-		this.user1.subscribe(us=>{
-			this.user=us;
-		});
+    this.user1.subscribe(us=>{
+      this.user=us;
+    });
   }
 
 }

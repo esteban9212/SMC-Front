@@ -54,11 +54,7 @@ idrol:string;
 	}
 
 	ngOnInit(): void {
-		  var tokenData = localStorage.getItem('token');
-
-  			if (tokenData == null){
-  				this.router.navigate(['/signin']);
-			}
+	
   			
 
 		this.programs= this.programsService.getPrograms();

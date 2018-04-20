@@ -22,6 +22,4 @@ export class User {
 		this.PASSWORD_USER=PASSWORD_USER;
 		this.STATE_ID_STATE=STATE_ID_STATE;
 	}
-
-
 }
