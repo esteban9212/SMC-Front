@@ -15,7 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule,Routes } from '@angular/router';
 import { ListAssessmentComponent } from './list-assessment/list-assessment.component';
-import {DataTableModule} from "angular2-datatable";
+import { DataTableModule } from "angular2-datatable";
 import { PruebatablaComponent } from './pruebatabla/pruebatabla.component';
 import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { ChartsModule } from 'ng2-charts';
@@ -29,9 +29,10 @@ import { AuthService } from './services/auth.service';
 import { PlanInfoComponent } from './plan-info/plan-info.component';
 import { CdioRowComponent } from './cdio-row/cdio-row.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //import {PopupModule} from 'ng2-opd-popup'
-
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     SignupComponent,
     SigninComponent,
     PlanInfoComponent,
-    CdioRowComponent
+    CdioRowComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +59,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HttpClientModule,
     FormsModule,
     RouterModule,
+    NgbModule.forRoot(),
+    Ng2SmartTableModule,
     DataTableModule,
     ChartsModule,
     AngularFontAwesomeModule,
