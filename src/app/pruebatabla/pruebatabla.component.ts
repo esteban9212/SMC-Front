@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Rx';
 import { LocalDataSource } from 'ng2-smart-table';
 import { Router } from "@angular/router";
 
+
 @Component({
   selector: 'app-pruebatabla',
   templateUrl: './pruebatabla.component.html',
@@ -98,7 +99,10 @@ export class PruebatablaComponent implements OnInit {
   }
 
   onEdit(event): void {
-      this.router.navigate(['/search']);
+    let idplan:number;
+    idplan=event.data.Idplan;
+
+      this.router.navigate(['/search/'+idplan]);
   }
 
 }

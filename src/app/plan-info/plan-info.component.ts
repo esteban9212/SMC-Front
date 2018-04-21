@@ -4,7 +4,8 @@ import { CoursesMapping } from '../models/coursesMappping';
 import { AssessmentCourse } from '../models/assessmentCourse';
 import { CDIOyPI } from '../models/cdiobypi';
 import { PlanAssessmentService } from '../services/plan-assessment.service';
-	import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
+import { PlanAssessment } from '../models/planAssessment';
 
 
 @Component({
@@ -13,12 +14,15 @@ import { PlanAssessmentService } from '../services/plan-assessment.service';
 	styleUrls: ['./plan-info.component.css']
 })
 export class PlanInfoComponent implements OnInit {
-
+	@Input() idPlan: number;
 	outcome:string;
 	outcomeid:string;
 	leader:string;
 	description:string;
-	idPlan:number;
+
+	planObservable:Observable<PlanAssessment>;
+	plan:PlanAssessment;
+
 
 	pis: Pi[];
 
@@ -26,15 +30,12 @@ export class PlanInfoComponent implements OnInit {
 
 
 	constructor(private planAssessmentService:PlanAssessmentService) { 
-		this.outcome="B";
-		this.outcomeid="1";
-		this.leader="Carlos Alberto Arce";
-		this.description="An ability to design and conduct experiments, as well as to analyze and interpret data";
+
 
 	}
 
 	ngOnInit() {
-		this.idPlan=2;
+
 		let piObservable = this.planAssessmentService.getPiByPlanId(this.idPlan);
 
 		piObservable.subscribe((data)=> {
@@ -44,6 +45,20 @@ export class PlanInfoComponent implements OnInit {
 		console.log(this.pis );
 		});
 
+
+		this.planObservable= this.planAssessmentService.getPlanById(this.idPlan);
+
+		this.planObservable.subscribe((data)=> {
+			this.plan = data;
+
+	
+	console.log(this.plan);
+		this.outcome=this.plan.Criterion;
+		this.outcomeid=this.plan.Idplan;
+		this.leader=this.plan.Leader;
+		this.description=this.plan.Description;
+		});
+	
 
 		}
 

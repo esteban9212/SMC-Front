@@ -7,7 +7,6 @@ import { Program } from '../models/program';
 import { Outcome } from '../models/outcome';
 import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 import { ParameterSmc } from '../models/parameterSmc';
-import { PlanAssessment } from '../models/planAssessment';
 import { Rol } from '../models/rol';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
@@ -35,7 +34,7 @@ export class CreatePlanComponent implements OnInit {
 	OutcomeCycleAs:Observable<OutcomeCycleAs>
 	OutcomeCycleAs2:OutcomeCycleAs;
 
-	plans:Observable<PlanAssessment[]>;
+
 	programSelected:any;
 	outcomeSelected:any;
 	user1:Observable<User>
@@ -47,7 +46,8 @@ export class CreatePlanComponent implements OnInit {
 
 	outcomecambiado:Observable<Outcome>;
 	outcomecambiado2:any;
-idrol:string;
+	idrol:string;
+
 	constructor(private userService:UserService,private programsService:ProgramsService,
 		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService, private router: Router) {
 		

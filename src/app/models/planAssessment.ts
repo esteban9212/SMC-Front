@@ -2,21 +2,32 @@ export class PlanAssessment {
 
 
 
-	ID_PLAN:string;
-	USER_CIP_ID_USER:string;
-	ID_OUTCOME_CYCLE_AS:string;
-		ID_PROGRAM:string;
-		ID_OUTCOME:string;
+	Idplan:string;
+	Name:string;
+	Ciclo:string;
+	SubCiclo:string;
+	Leader:string;
+	Program:string;
+	State:string;
+	DateCreation:string;
+	Author:string;
+	Criterion:string;
+	Description:string;
 	
-	constructor(ID_PLAN:string, USER_CIP_ID_USER:string,ID_OUTCOME_CYCLE_AS:string,ID_PROGRAM:string,ID_OUTCOME:string) {
-		this.ID_PLAN=ID_PLAN;
-		this.USER_CIP_ID_USER=USER_CIP_ID_USER;
-		this.ID_OUTCOME_CYCLE_AS=ID_OUTCOME_CYCLE_AS;
-		this.ID_PROGRAM=ID_PROGRAM;
-		this.ID_OUTCOME=ID_OUTCOME;
+	constructor(Idplan:string, Name:string,Ciclo:string,SubCiclo:string,Leader:string,
+				Program:string, State:string,DateCreation:string,Author:string,Criterion:string,Description:string) {
+		this.Idplan=Idplan;
+		this.State=State;
+		this.Ciclo=Ciclo;
+		this.SubCiclo=SubCiclo;
+		this.Leader=Leader;
+		this.Program=Program;
+		this.Name=Name;
+		this.DateCreation=DateCreation;
+		this.Author=Author;
+		this.Criterion=Criterion;
+		this.Description=Description;
 	}
-
-
 
 
 

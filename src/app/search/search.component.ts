@@ -6,10 +6,9 @@ import { Program } from '../models/program';
 import { Outcome } from '../models/outcome';
 import { OutcomeCycleAs } from '../models/outcomeCycleAs';
 import { ParameterSmc } from '../models/parameterSmc';
-import { PlanAssessment } from '../models/planAssessment';
-import { Router } from "@angular/router";
-
+import { Router,ActivatedRoute } from "@angular/router";
 import { Observable } from 'rxjs/Rx';
+import { PlanAssessment } from '../models/planAssessment';
 
 @Component({
   selector: 'app-search',
@@ -22,17 +21,37 @@ export class SearchComponent implements OnInit {
   plans: Observable<any[]>;
 
   columns: string[];
+  idplan:number;
 
+    planObservable:Observable<PlanAssessment>;
+  plan:PlanAssessment;
 
-  constructor(private planAssessmentService:PlanAssessmentService, private router: Router) {
+  constructor(private planAssessmentService:PlanAssessmentService, private router: Router,private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
 
+this.route.params
+      .subscribe(params => {
+        const _id = params['idPlan'].toString();
+        this.idplan = _id;
+      });
+
+
   this.columns = this.planAssessmentService.getColumns(); 
   //["name", "age", "species", "occupation"]
   this.plans = this.planAssessmentService.getPlans();
+
+
+  this.planObservable= this.planAssessmentService.getPlanById(this.idplan);
+
+    this.planObservable.subscribe((data)=> {
+      this.plan = data;
+
+  
+
+    });
 
 			}
 

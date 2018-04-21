@@ -68,7 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
-      {path:'search',component:SearchComponent},
+      {path:'search/:idPlan',component:SearchComponent},
       {path:'signin',component:SigninComponent},
       {path:'signup',component:SignupComponent},
       {path:'**',pathMatch:'full',redirectTo:'signin'}

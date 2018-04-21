@@ -41,12 +41,7 @@
 
 	getPiByPlanId(idplan): Observable<any[]>{
 		let piObservable=this.http.get('http://127.0.0.1:8000/api/getPisByPlanId/'+idplan).map((response:Response)=> response.json());
-
-
-		
-
-
-     return piObservable;
+		return piObservable;
 	}
 
 	getCdioByPiId(idPi): CDIOyPI[]{
@@ -79,6 +74,13 @@
 
 		return AssessmentCourses;
 	}
+
+
+	getPlanById(idplan): Observable<PlanAssessment>{
+		return this.http.get('http://127.0.0.1:8000/api/getPlanById/'+idplan).map((response:Response)=> response.json());
+
+	}
+
 
 
 }
