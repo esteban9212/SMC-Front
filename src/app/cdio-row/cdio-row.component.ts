@@ -24,26 +24,13 @@ export class CdioRowComponent implements OnInit {
   constructor(private planAssessmentService:PlanAssessmentService) { }
 
   ngOnInit() {
-
-  	this.CDIOSObservable=this.planAssessmentService.getCdioByPiId(this.Pi.ID_PI);
-
-  	this.CDIOSObservable
-		.subscribe((data)=> {
-			this.CDIOS = data;
-		});
+console.log("pi");
+console.log(this.Pi);
   }
 
   getCourses(idCdio){
 
 
-  	this.CDIOSObservable=this.planAssessmentService.getMappingCourses(idCdio);
-
-  	this.coursesObservable
-		.subscribe((data)=> {
-			this.courses = data;
-		});
-console.log(this.courses);
-  	return this.courses;
   }
 
 }

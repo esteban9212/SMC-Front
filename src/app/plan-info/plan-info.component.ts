@@ -1,9 +1,10 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 import { Pi } from '../models/pi';
 import { CoursesMapping } from '../models/coursesMappping';
 import { AssessmentCourse } from '../models/assessmentCourse';
+import { CDIOyPI } from '../models/cdiobypi';
 import { PlanAssessmentService } from '../services/plan-assessment.service';
+	import { Observable } from 'rxjs/Rx';
 
 
 @Component({
@@ -17,15 +18,9 @@ export class PlanInfoComponent implements OnInit {
 	outcomeid:string;
 	leader:string;
 	description:string;
+	idPlan:number;
 
-	pisObservable: Observable<any[]>;
 	pis: Pi[];
-
-	coursesObservable: Observable<any[]>;
-	courses: CoursesMapping[];
-
-	assessmentCoursesObservable: Observable<any[]>;
-	assessmentCourses: AssessmentCourse[];
 
 	columns: string[];
 
@@ -35,44 +30,28 @@ export class PlanInfoComponent implements OnInit {
 		this.outcomeid="1";
 		this.leader="Carlos Alberto Arce";
 		this.description="An ability to design and conduct experiments, as well as to analyze and interpret data";
-	
+
 	}
 
 	ngOnInit() {
-	this.pisObservable = this.planAssessmentService.getPiByPlanId(1);
+		this.idPlan=2;
+		let piObservable = this.planAssessmentService.getPiByPlanId(this.idPlan);
 
-		this.pisObservable
-		.subscribe((data)=> {
+		piObservable.subscribe((data)=> {
 			this.pis = data;
+
+	
+		console.log(this.pis );
 		});
+
+
+		}
+
 		
 	}
 
 
-	getCourses(idPi){
-
-	//this.coursesObservable = this.planAssessmentService.getMappingCourses(idPi);
-
-		//this.coursesObservable.subscribe((data)=> {
-	//		this.courses = data;
-	//	});
 
 
-	//	return this.courses;
-	}
-
-	getAssessmentCourses(idPi){
-
-	this.assessmentCoursesObservable = this.planAssessmentService.getAssessmentCoursesByPi(idPi);
-
-		this.assessmentCoursesObservable.subscribe((data)=> {
-			this.assessmentCourses = data;
-			
-		});
-
-	
-		return this.courses;
-	}
 
 
-}

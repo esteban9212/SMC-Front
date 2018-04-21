@@ -20,44 +20,59 @@
 
 	</form>
 
-	<table class="table table-bordered table-hover table-sm ">
+<table class="table table-bordered table-hover table-sm ">
 
 		<thead>
 			<tr>
-				<th style="width: 15%">
+				<th style="width: 3%">
 					Performance Indicator
 				</th>
-				<th style="width: 10%">
+				<th style="width: 5%">
 					CDIO level
 				</th>
-				<th style="width: 15%">
+				<th style="width: 5%">
 					Curricular mapping
 				</th>
 				<th style="width: 10%">
-					source of assessment
+					Source of assessment
 				</th>
-				<th style="width: 15%">
-					assessment method
+				<th style="width: 1%">
+					Evaluation date
 				</th>
-				<th style="width: 10%">
-					date of data collection
-				</th>
-				<th style="width: 5%">
-					person in charge
-				</th>
-				<th style="width: 5%">
-					date of evaluation
-				</th>
+				
 			</tr>
 
 		</thead>
 		<tbody>
-			<tr *ngFor="let item of pis">
-				<td class="text-right">{{item.CODE}} {{item.DESCRIPTION}}</td>
-
-				<app-cdio-row [Pi]=item></app-cdio-row>
+			<tr *ngFor="let pi of pis">
+				<td class="text-right">{{pi.CodePi}} {{pi.DescriptionPi}}</td>
 
 
+			<td class="text-right">
+				<ul>
+					<li *ngFor="let cdio of pi.Cdios">
+						{{cdio.DESCRIPTION}}
+					</li>
+
+				</ul>
+			</td>
+
+
+			<td class="text-right">
+				<ul>
+					<li *ngFor="let mapping of pi.MappingCourses">
+						{{mapping.NAME_COURSE}}
+					</li>
+
+				</ul>
+			</td>
+
+			<app-cdio-row [Pi]=pi></app-cdio-row>
+
+
+			<td class="text-right">
+			<p>evaluation date</p>
+			</td>
 
 			</tr>
 
