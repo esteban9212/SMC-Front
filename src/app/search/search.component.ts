@@ -23,8 +23,9 @@ export class SearchComponent implements OnInit {
   columns: string[];
   idplan:number;
 
-    planObservable:Observable<PlanAssessment>;
+  planObservable:Observable<PlanAssessment>;
   plan:PlanAssessment;
+  criterio:string;
 
   constructor(private planAssessmentService:PlanAssessmentService, private router: Router,private route: ActivatedRoute) {
 
@@ -46,9 +47,9 @@ this.route.params
 
   this.planObservable= this.planAssessmentService.getPlanById(this.idplan);
 
-    this.planObservable.subscribe((data)=> {
-      this.plan = data;
-
+  this.planObservable.subscribe((data)=> {
+  this.plan = data;
+  this.criterio=this.plan.Criterion;
   
 
     });

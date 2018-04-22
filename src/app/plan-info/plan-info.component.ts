@@ -19,6 +19,7 @@ export class PlanInfoComponent implements OnInit {
 	outcomeid:string;
 	leader:string;
 	description:string;
+	evaluation:string;
 
 	planObservable:Observable<PlanAssessment>;
 	plan:PlanAssessment;
@@ -57,6 +58,7 @@ export class PlanInfoComponent implements OnInit {
 		this.outcomeid=this.plan.Idplan;
 		this.leader=this.plan.Leader;
 		this.description=this.plan.Description;
+		this.evaluation=this.plan.DateEvaluation;
 		});
 	
 

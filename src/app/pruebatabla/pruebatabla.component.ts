@@ -102,7 +102,8 @@ export class PruebatablaComponent implements OnInit {
     let idplan:number;
     idplan=event.data.Idplan;
 
-      this.router.navigate(['/search/'+idplan]);
+    window.open('/search/'+idplan); 
+     // this.router.navigate(['/search/'+idplan]);
   }
 
 }

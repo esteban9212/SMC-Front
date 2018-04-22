@@ -1,22 +1,21 @@
 				<th style="width: 3%">
-					Course
+					Assessment courses
 				</th>
 				<th style="width: 3%">
-					assessment method
+					Assessment method
 				</th >
-				<th style="width: 3%">
-					date of data collection
+				<th style="width: 1%">
+					Date of data collection
 				</th>
 				<th style="width: 5%">
-					person in charge
+					Person in charge
 				</th>
 
 <tr *ngFor="let item of Pi.AssessmentCourses">
-	<td class="text-right">{{item.NAME_COURSE}} </td>
-	<td class="text-right">{{item.CREDITS}} </td>
-	<td class="text-right">{{item.NAME_COURSE}} </td>
-	<td class="text-right">{{item.NAME_COURSE}} </td>
-
+	<td class="text-right">{{item.NameAssessmentSource}} </td>
+	<td class="text-right">{{item.AssessmentMethod}} </td>
+	<td class="text-right">{{item.DateCollection.date}} </td>
+	<td class="text-right">{{item.PersonInCharge}} </td>
 
 
 </tr>

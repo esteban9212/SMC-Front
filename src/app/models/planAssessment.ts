@@ -13,9 +13,11 @@ export class PlanAssessment {
 	Author:string;
 	Criterion:string;
 	Description:string;
+	DateEvaluation:string;
+	
 	
 	constructor(Idplan:string, Name:string,Ciclo:string,SubCiclo:string,Leader:string,
-				Program:string, State:string,DateCreation:string,Author:string,Criterion:string,Description:string) {
+				Program:string, State:string,DateCreation:string,Author:string,Criterion:string,Description:string,DateEvaluation:string) {
 		this.Idplan=Idplan;
 		this.State=State;
 		this.Ciclo=Ciclo;
@@ -27,6 +29,7 @@ export class PlanAssessment {
 		this.Author=Author;
 		this.Criterion=Criterion;
 		this.Description=Description;
+		this.DateEvaluation=DateEvaluation;
 	}
 
 
