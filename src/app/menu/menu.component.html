@@ -17,11 +17,10 @@
         </li>
       </ul>
 
-      <form class="form-inline my-2 my-lg-0">
-        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" 
-        aria-haspopup="true" aria-expanded="false">{{user.NAME_USER}} {{user.LAST_NAME}}</a>
-      </form>
-
+      <ul class="nav navbar-nav navbar-right">
+      <li><a class="nav-link"><span class="glyphicon glyphicon-user"></span> {{user.NAME_USER}} {{user.LAST_NAME}}</a></li>
+      <li><a href="javascript:void(0)" class="nav-link" (click)="logout()">Logout</a></li>
+    </ul>
     </div>
 
   </nav>
