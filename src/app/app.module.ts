@@ -31,6 +31,7 @@ import { CdioRowComponent } from './cdio-row/cdio-row.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableUsersComponent } from './table-users/table-users.component';
 
 //import {PopupModule} from 'ng2-opd-popup'
 
@@ -52,6 +53,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SigninComponent,
     PlanInfoComponent,
     CdioRowComponent,
+    TableUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
+      {path:'assign',component:TableUsersComponent},
       {path:'search/:idPlan',component:SearchComponent},
       {path:'signin',component:SigninComponent},
       {path:'signup',component:SignupComponent},
