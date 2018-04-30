@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   
   user1:Observable<User>
   user:User;
+  noShow=true;
 
   constructor(private userService:UserService, private authService: AuthService, private router: Router) { }
 
