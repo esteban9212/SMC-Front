@@ -1,0 +1,79 @@
+<h1 class="text-center h1">
+  Editar Plan
+</h1>
+
+  <div class="panel-body">
+        <div class="form-group">
+
+          <label class="col-md-12 control-label">Performance Indicator</label>
+          <div class="col-md-12">
+          	<label class="col-md-12">{{ codePi }} {{ descriptionPi }}</label>
+          </div>
+        </div>
+
+        <div class="form-group"
+             [ngClass]="{'has-error': (lastName.touched || lastName.dirty) && lastName.invalid }">
+
+          <label class="col-md-12 control-label">CDIO Level</label>
+          <div class="col-md-12">
+            <label class="col-md-12 control-label">CDIO Level</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label">Curricular Mapping</label>
+          <div class="col-md-12">
+            <label class="col-md-12 control-label">CDIO Level</label>
+          </div>
+        </div>
+  </div>
+
+
+	<h3 class="text-center h3">
+  		Source of Assessment
+	</h3>
+
+    <div class="panel-body">
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="form-group">
+          <label class="col-md-12 control-label">Asessment Courses</label>
+          <div class="col-md-12">
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <label class="col-md-12 control-label">Assessment Method</label>
+          <div class="col-md-12">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label"> Date of data Collection</label>
+
+          <div class="col-md-12">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-12 control-label">Person in Charge</label>
+
+          <div class="col-md-12">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-12 col-md-offset-2">
+            <button class="btn btn-primary"
+                    (click)="save()"
+                    [disabled]="signupForm.invalid">
+              Submit
+            </button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+<app-menu></app-menu>
+<router-outlet></router-outlet>
