@@ -30,6 +30,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { TableUsersComponent } from './table-users/table-users.component';
 
 //import {PopupModule} from 'ng2-opd-popup'
 
@@ -50,6 +51,7 @@ import { EditPlanComponent } from './edit-plan/edit-plan.component';
     PlanInfoComponent,
     CdioRowComponent,
     EditPlanComponent,
+    TableUsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,7 @@ import { EditPlanComponent } from './edit-plan/edit-plan.component';
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
+      {path:'assign',component:TableUsersComponent},
       {path:'search/:idPlan',component:SearchComponent},
       {path:'signin',component:SigninComponent},
       {path:'edit/:idPlan/:idPi',component:EditPlanComponent},

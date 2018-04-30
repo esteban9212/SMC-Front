@@ -25,5 +25,7 @@ export class OutcomeService {
 	changeStateOutcomeToCreated(idOutcome):Observable<Outcome>{
 		return this.http.get('http://127.0.0.1:8000/api/changeStateOutcomeToCreated/'+idOutcome).map((response:Response)=> response.json());
 	}
-
+	getOutcomesActiveByProgram(idProgram):Observable<Outcome[]>{
+		return this.http.get('http://127.0.0.1:8000/api/outcomesByCycleActiveByProgram/'+idProgram).map((response:Response)=> response.json());
+	}
 }

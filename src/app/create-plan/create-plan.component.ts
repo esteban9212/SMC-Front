@@ -85,19 +85,22 @@ export class CreatePlanComponent implements OnInit {
 		for (var i = this.roles2.length - 1; i >= 0; i--) {
 			this.idrol=this.roles2[i].ROLE_CIP_ID_ROLE;
 
-			if (this.idrol=='1') {
-				this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user.ID_USER,newValue);
-				console.log('Outcome Leader');
-			}
 			if (this.idrol=='4') {
 				this.outcomes=null;
 				console.log('Professor');
-			}
-			if (this.idrol=='2') {
+			}else{
+				if (this.idrol=='1') {
+				this.outcomes= this.outcomeService.outcomesByUserAndProgram(this.user.ID_USER,newValue);
+				console.log('Outcome Leaderrrrr');
+				}
+				
+				if (this.idrol=='2') {
 
-				this.outcomes= this.outcomeService.outcomeByProgram(newValue);
-				console.log('Program Director');
+					this.outcomes= this.outcomeService.outcomeByProgram(newValue);
+					console.log('Program Director');
+				}
 			}
+		
 		}
 	
 		

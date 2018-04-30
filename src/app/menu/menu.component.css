@@ -47,6 +47,26 @@ div>ul>li>h5 {
     margin-top: 15px;
 }
 
+li.nav-item.active {
+    text-decoration: underline;
+
+}
+
+
+
+#navbarSupportedContent ul
+{
+    margin: 0;
+    padding: 0;
+}
+
+#navbarSupportedContent ul li
+{
+    list-style-type: none;
+    display: inline;
+}
+
+
 
 
 

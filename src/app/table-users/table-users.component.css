@@ -1,0 +1,59 @@
+.componenteTabla{
+
+    display: inline-flex;
+    margin-top: 80px;
+    margin-left: 20px;
+    text-align: initial;
+}
+
+.componenteCrearPlan{
+
+    display: inline-flex;
+    margin-top: 20px;
+    margin-left: 20px;
+    text-align: initial;
+}
+
+.padre{
+	text-align: center;
+}
+
+.boton{
+	text-align: center;
+    color: #ffffff;
+    background-color: #00599c;
+}
+
+.input-group-text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: .375rem .75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #00599c;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+h4 {
+    margin-top: 10px;
+    padding-top: 78px;
+}
+.tabla{
+    width: 70%;
+    margin-left: 12%;
+    border: 1px solid #CCCCCC;
+}
+
+input.btn.light-blue.boton {
+    margin-bottom: 15px;
+}

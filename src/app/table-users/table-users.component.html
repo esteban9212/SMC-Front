@@ -1,0 +1,55 @@
+<div class="padre">
+
+ <h4>to assign an outcome to a person please select first the program to which the outcome pertains and then to the person</h4>
+<div class="componenteCrearPlan">
+
+  <form (ngSubmit)="asignarOutcome()">
+
+      <label>Select a Program</label>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Programs</label>
+        </div>
+        <select [(ngModel)]="programSelected" (ngModelChange)="onChangeProgram($event)" class="form-control" name="programSelected">
+         <option value="" disabled> Select a Program</option>
+         <option *ngFor="let program of programs" [value]="program.ID_PROGRAM" ng-change="selectChanged(program)" >  {{program.NAME_PROGRAM}}  </option>
+       </select>
+     </div>
+
+     <label>Select an Outcome</label>
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Outcomes</label>
+      </div>
+      <select [(ngModel)]="outcomeSelected" (ngModelChange)="onChangeOutcome($event)" class="form-control" name="outcomeSelected">
+        <option value="" disabled> Select a Outcome</option>
+        <option *ngFor="let outcome of outcomes" [value]="outcome.ID_ST_OUTCOME" >  {{outcome.CRITERION}} - {{outcome.SHORT_DESCRIPTION}} - {{outcome.PROGRAM_ID_PROGRAM}}  </option>
+      </select>
+    </div>
+
+     <label>Select a User</label>
+      
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Users</label>
+        </div>
+        <input class="form-control" type="text" name="txt-user" value="sdasd" [(ngModel)]="userName" readonly>
+     </div>
+
+    <div class="padre">
+        <input type="submit" class="btn light-blue boton " value="Assign" >
+      
+    </div>
+  </form>
+
+  </div>
+</div>
+
+
+
+<div class="col-md-12 tabla">
+  <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)"></ng2-smart-table>
+</div>
+<app-menu></app-menu>
+<router-outlet></router-outlet>
