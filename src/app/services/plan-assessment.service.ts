@@ -44,6 +44,11 @@
 		return piObservable;
 	}
 
+	getPiByPlanIdPiId(idplan, idpi): Observable<any>{
+		let piObservable=this.http.get('http://127.0.0.1:8000/api/getPiByPlanIdPiId/'+idplan+'/'+idpi).map((response:Response)=> response.json());
+		return piObservable;
+	}
+
 	getCdioByPiId(idPi): CDIOyPI[]{
 		let cdioObservable=this.http.get('http://127.0.0.1:8000/api/getCdioByPiId/'+idPi).map((response:Response)=> response.json());
 		let cdios:CDIOyPI[];

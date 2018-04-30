@@ -64,6 +64,13 @@ export class PlanInfoComponent implements OnInit {
 
 		}
 
+
+		editRow(pi:Pi){
+
+    			window.open('/edit/'+this.idPlan+'/'+pi.Idpi); 
+
+		}
+
 		
 	}
 

@@ -31,7 +31,6 @@ export class MenuComponent implements OnInit {
   }
 
   logout(){
-    console.log("click");
     this.authService.logout();
     localStorage.clear();
     this.router.navigate(['/signin']);

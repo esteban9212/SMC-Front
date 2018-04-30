@@ -8,7 +8,6 @@ import { Headers } from '@angular/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './login/login.component';
 import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
@@ -21,7 +20,6 @@ import { DataFilterPipe } from './pipes/data-filter.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { TortaComponent } from './torta/torta.component';
 import { TortaBackComponent } from './torta-back/torta-back.component';
-import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +29,7 @@ import { CdioRowComponent } from './cdio-row/cdio-row.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
 
 //import {PopupModule} from 'ng2-opd-popup'
 
@@ -39,7 +38,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     MenuComponent,
-    LoginComponent,
     CreatePlanComponent,
     HomeComponent,
     SearchComponent,
@@ -48,10 +46,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DataFilterPipe,
     TortaComponent,
     TortaBackComponent,
-    SignupComponent,
     SigninComponent,
     PlanInfoComponent,
     CdioRowComponent,
+    EditPlanComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       {path:'create',component:CreatePlanComponent},
       {path:'search/:idPlan',component:SearchComponent},
       {path:'signin',component:SigninComponent},
-      {path:'signup',component:SignupComponent},
+      {path:'edit/:idPlan/:idPi',component:EditPlanComponent},
       {path:'**',pathMatch:'full',redirectTo:'signin'}
       ])
   ],

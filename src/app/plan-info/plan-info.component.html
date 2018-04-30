@@ -39,6 +39,9 @@
 				<th style="width: 1%">
 					Evaluation date
 				</th>
+				<th style="width: 1%">
+					Action
+				</th>
 				
 			</tr>
 
@@ -72,6 +75,10 @@
 
 			<td class="text-right">
 			<p>{{evaluation}}</p>
+			</td>
+
+			<td class="text-right">
+			  <button type="button" class="btn btn-primary" (click)="editRow(pi);">Edit</button> 
 			</td>
 
 			</tr>
