@@ -49,6 +49,11 @@
 		return piObservable;
 	}
 
+	updateAS(idAsSrc,idCourse,colDate,idMethod,idProf){
+		console.log('http://127.0.0.1:8000/api/updateAS/'+idAsSrc+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf);
+		this.http.get('http://127.0.0.1:8000/api/updateAS/'+idAsSrc+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf).map((response:Response)=> response.json());
+	}
+
 	getCdioByPiId(idPi): CDIOyPI[]{
 		let cdioObservable=this.http.get('http://127.0.0.1:8000/api/getCdioByPiId/'+idPi).map((response:Response)=> response.json());
 		let cdios:CDIOyPI[];
@@ -60,13 +65,18 @@
 
 	}
 	getMappingCourses(idPi): CoursesMapping[]{
-		let curricularMappingObservable=this.http.get('http://127.0.0.1:8000/api/getCurricularMappinCDIOOutcome/'+idPi).map((response:Response)=> response.json());
+		let curricularMappingObservable=this.http.get('http://127.0.0.1:8000/api/getCurricularMappinCDIOOutcome/'+idPi).map((response:Response)=> response.json()).do(data=>{console.log(data);});
 		let curricularMapping:CoursesMapping[];
 		curricularMappingObservable.subscribe((data)=> {
 			curricularMapping = data;
 		});
 
 		return curricularMapping;
+
+	}
+
+	getMappingCourses1(idPi): Observable<CoursesMapping[]>{
+		return this.http.get('http://127.0.0.1:8000/api/getCurricularMappinCDIOOutcome/'+idPi).map((response:Response)=> response.json());
 
 	}
 
@@ -84,6 +94,10 @@
 	getPlanById(idplan): Observable<PlanAssessment>{
 		return this.http.get('http://127.0.0.1:8000/api/getPlanById/'+idplan).map((response:Response)=> response.json());
 
+	}
+
+	assessmentSourcesByPiId(idpi): Observable<any[]>{
+		return this.http.get('http://127.0.0.1:8000/api/assessmentSourcesByPi/'+idpi).map((response:Response)=> response.json());
 	}
 
 

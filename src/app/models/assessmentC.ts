@@ -1,0 +1,33 @@
+export class AssessmentC {
+
+
+	ID_AS_SRC:string;
+	USER_CIP_ID_USER:string;
+	COURSE_ID_COURSE:string;
+	PI_ID_PI:string;
+	METHOD_ID_AS_METHOD:string;
+	COLLECTION_DATE:string;
+	COLLECTION_FREQUENCY:string;
+
+
+	constructor(ID_AS_SRC:string, 
+		USER_CIP_ID_USER:string,
+		COURSE_ID_COURSE:string,
+		PI_ID_PI:string,
+		METHOD_ID_AS_METHOD:string,
+		COLLECTION_DATE:string,
+		COLLECTION_FREQUENCY:string){
+
+		this.ID_AS_SRC=ID_AS_SRC;
+		this.USER_CIP_ID_USER=USER_CIP_ID_USER;
+		this.COURSE_ID_COURSE=COURSE_ID_COURSE;
+		this.PI_ID_PI=PI_ID_PI;
+		this.METHOD_ID_AS_METHOD=METHOD_ID_AS_METHOD;
+		this.COLLECTION_DATE=COLLECTION_DATE;
+		this.COLLECTION_FREQUENCY=COLLECTION_FREQUENCY;
+	}
+
+
+
+}
+

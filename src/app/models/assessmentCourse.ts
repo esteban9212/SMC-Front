@@ -5,6 +5,7 @@ export class AssessmentCourse {
 	NameAssessmentSource:string;
 	AssessmentMethod:string;
 	DateCollection:string;
+	Date:string;
 	PersonInCharge:string;
 
 
@@ -14,6 +15,7 @@ export class AssessmentCourse {
 		this.AssessmentMethod=AssessmentMethod;
 		this.PersonInCharge=PersonInCharge;
 		this.DateCollection=DateCollection;
+		this.Date=DateCollection.toString();
 
 	}
 

@@ -70,13 +70,13 @@ export class PruebatablaComponent implements OnInit {
         title: 'State',
         type: 'number',
       },
-      DateCreation: {
-        title: 'Creation Date',
+      DateEvaluation: {
+        title: 'Evaluation Date',
         type: 'string',
       },
       Author: {
         title: 'Author',
-        type: 'number',
+        type: 'string',
       },
     },
   };
@@ -95,6 +95,7 @@ export class PruebatablaComponent implements OnInit {
       .subscribe((data)=> {
           this.data = data;
           this.source.load(data);
+          console.log(data);
       });
   }
 

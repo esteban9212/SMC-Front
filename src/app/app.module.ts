@@ -11,7 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { CreatePlanComponent } from './create-plan/create-plan.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RouterModule,Routes } from '@angular/router';
 import { ListAssessmentComponent } from './list-assessment/list-assessment.component';
 import { DataTableModule } from "angular2-datatable";
@@ -31,9 +31,9 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { TableUsersComponent } from './table-users/table-users.component';
-
-//import {PopupModule} from 'ng2-opd-popup'
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MethodService } from './services/method.service';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   declarations: [
@@ -63,8 +63,9 @@ import { TableUsersComponent } from './table-users/table-users.component';
     Ng2SmartTableModule,
     DataTableModule,
     ChartsModule,
+    MyDatePickerModule,
     AngularFontAwesomeModule,
-//     PopupModule.forRoot(),
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path:'home',component:HomeComponent},
       {path:'create',component:CreatePlanComponent},
@@ -75,7 +76,7 @@ import { TableUsersComponent } from './table-users/table-users.component';
       {path:'**',pathMatch:'full',redirectTo:'signin'}
       ])
   ],
-  providers: [ProgramsService,OutcomeService,PlanAssessmentService,UserService,AuthService,],
-  bootstrap: [AppComponent]
+  providers: [ProgramsService,OutcomeService,PlanAssessmentService,UserService,AuthService,MethodService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

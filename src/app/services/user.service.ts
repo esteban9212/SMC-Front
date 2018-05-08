@@ -15,8 +15,6 @@ export class UserService {
  constructor(private http:Http) { 	
 	}
 
-
-
 	getUser(idUser):Observable<User>{
 		console.log('http://127.0.0.1:8000/api/userById/'+idUser)
 		return this.http.get('http://127.0.0.1:8000/api/userById/'+idUser).map((response:Response)=> response.json());
@@ -33,5 +31,10 @@ export class UserService {
 	getAllUsers():Observable<UserRols[]>{
 
 		return this.http.get('http://127.0.0.1:8000/api/getAllUserCip').map((response:Response)=> response.json());
+	}
+
+	getAllProfessors():Observable<UserRols[]>{
+
+		return this.http.get('http://127.0.0.1:8000/api/getAllProfessors').map((response:Response)=> response.json());
 	}
 }

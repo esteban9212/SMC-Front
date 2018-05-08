@@ -1,79 +1,138 @@
+<div>
 <h1 class="text-center h1">
-  Editar Plan
+  Editar Plan - PI
 </h1>
 
-  <div class="panel-body">
-        <div class="form-group">
+  <form>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Performance Indicator:</label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{codePi}}>
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{descriptionPi}}>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">CDIO Level:</label>
+      <div class="col-sm-10">
+        <ul>
+          <li *ngFor="let cdio of pi.Cdios">
+            {{cdio.DESCRIPTION}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Curricular Mapping:</label>
+      <div class="col-sm-10">
+        <ul>
+          <li *ngFor="let mapC of pi.MappingCourses">
+            {{mapC.NAME_COURSE}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </form>
 
-          <label class="col-md-12 control-label">Performance Indicator</label>
-          <div class="col-md-12">
-          	<label class="col-md-12">{{ codePi }} {{ descriptionPi }}</label>
-          </div>
-        </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (lastName.touched || lastName.dirty) && lastName.invalid }">
+  <h3 class="text-center h3">
+  Source of Assessment
+  </h3>
 
-          <label class="col-md-12 control-label">CDIO Level</label>
-          <div class="col-md-12">
-            <label class="col-md-12 control-label">CDIO Level</label>
-          </div>
-        </div>
+  <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)"></ng2-smart-table>
+</div>
 
-        <div class="form-group">
-          <label class="col-md-12 control-label">Curricular Mapping</label>
-          <div class="col-md-12">
-            <label class="col-md-12 control-label">CDIO Level</label>
-          </div>
-        </div>
+  <hr>
+
+  <div *ngIf="checked">
+    
+    <h3 class="text-center h3">
+      Edit Source of Assessment
+    </h3>
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Actual Assessment Source: </label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{actualAssessmentCourse.NameAssessmentSource}}>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Actual Assessment Method: </label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{actualAssessmentCourse.AssessmentMethod}}>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Actual Date of Collection: </label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{actualAssessmentCourse.DateCollection}}>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="staticEmail" class="col-sm-2 col-form-label">Actual Person In Charge: </label>
+      <div class="col-sm-10">
+        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value={{actualAssessmentCourse.PersonInCharge}}>
+      </div>
+    </div>
+
   </div>
 
+  <hr>
 
-	<h3 class="text-center h3">
-  		Source of Assessment
-	</h3>
-
-    <div class="panel-body">
-    <form class="form-horizontal">
-      <fieldset>
-        <div class="form-group">
-          <label class="col-md-12 control-label">Asessment Courses</label>
-          <div class="col-md-12">
-          </div>
+<div>
+  <div *ngIf="checked">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Source: </label>
         </div>
+        <div style="width: 250px">
+        <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="programSelected">
+        <option value="" disabled> Select an Assessment Source</option>
+        <option *ngFor="let course of MappingCourses" [value]="course.ID_COURSE">  {{course.NAME_COURSE}}  </option>
+        </select>
+      </div>
+    </div>
 
-        <div class="form-group">
-
-          <label class="col-md-12 control-label">Assessment Method</label>
-          <div class="col-md-12">
-          </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Method: </label>
         </div>
+        <div style="width: 250px">
+        <select [(ngModel)]="methodSelected" (ngModelChange)="onChangeMethod($event)" class="form-control" name="programSelected">
+        <option value="" disabled> Select an Assessment Method</option>
+        <option *ngFor="let method of methods | async" [value]="method.ID_AS_METHOD">  {{method.NAME}}</option>
+        </select>
+      </div>
+    </div>
 
-        <div class="form-group">
-          <label class="col-md-12 control-label"> Date of data Collection</label>
-
-          <div class="col-md-12">
-          </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Date of Collection: </label>
         </div>
-
-        <div class="form-group">
-          <label class="col-md-12 control-label">Person in Charge</label>
-
-          <div class="col-md-12">
-          </div>
+        <div style="width: 270px">
+          <my-date-picker name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model" (dateChanged)="onDateChanged($event)" required></my-date-picker>
         </div>
+    </div>
 
-        <div class="form-group">
-          <div class="col-md-12 col-md-offset-2">
-            <button class="btn btn-primary"
-                    (click)="save()"
-                    [disabled]="signupForm.invalid">
-              Submit
-            </button>
-          </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Person in Charge </label>
         </div>
-      </fieldset>
-    </form>
+        <div style="width: 280px">
+        <select [(ngModel)]="personSelected" (ngModelChange)="onChangePerson($event)" class="form-control" name="programSelected">
+          
+        <option value="" disabled> Select a Person In Charge</option>
+        <option *ngFor="let person of professors | async" [value]="person.IdUserCip">  {{person.NameUserCip}}</option>
+        </select>
+      </div>
+    </div>
+
+  <button (click)="myFunc()">Edit</button>
+  <button (click)="myFunc()">Delete</button>
   </div>
+</div>
+
 <app-menu></app-menu>
 <router-outlet></router-outlet>

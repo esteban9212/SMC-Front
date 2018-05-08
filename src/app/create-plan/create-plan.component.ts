@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ProgramsService } from '../services/programs.service';
 import { OutcomeService } from '../services/outcome.service';
 import { UserService } from '../services/user.service';
@@ -11,7 +11,7 @@ import { Rol } from '../models/rol';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../models/user';
 import { Router } from "@angular/router";
-//Simport {Popup} from 'ng2-opd-popup';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-create-plan',
@@ -49,7 +49,9 @@ export class CreatePlanComponent implements OnInit {
 	idrol:string;
 
 	constructor(private userService:UserService,private programsService:ProgramsService,
-		private outcomeService:OutcomeService,private planAssessmentService:PlanAssessmentService, private router: Router) {
+		private outcomeService:OutcomeService,
+		private planAssessmentService:PlanAssessmentService, 
+		private router: Router, private alertConfig: NgbAlertConfig) {
 		
 	}
 
@@ -72,6 +74,8 @@ export class CreatePlanComponent implements OnInit {
 	//	for (var i = this.roles2.length - 1; i >= 0; i--) {
 	//		this.idrol=this.roles2[i].ROLE_CIP_ID_ROLE;
 	//	}
+
+	
 
 	}
 
@@ -145,8 +149,9 @@ export class CreatePlanComponent implements OnInit {
 			this.outcomecambiado2 = prueba;
 		});
 
+		this.alertConfig.type='success';
+		this.alertConfig.dismissible = true;
 
-//		this.popup.show();
 	}
 
 
