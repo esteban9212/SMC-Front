@@ -38,6 +38,10 @@
   Source of Assessment
   </h3>
 
+  <div class="form-group">
+      <button (click)="enableNewAS()"><i class="fas fa-plus"></i> Add Source of Assessment</button>
+  </div> 
+
   <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)"></ng2-smart-table>
 </div>
 
@@ -88,6 +92,64 @@
           <label class="input-group-text" for="inputGroupSelect01">Assessment Source: </label>
         </div>
         <div style="width: 250px">
+        <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="assessmentSelected">
+        <option value="" disabled> Select an Assessment Source</option>
+        <option *ngFor="let course of MappingCourses" [value]="course.ID_COURSE">  {{course.NAME_COURSE}}  </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Method: </label>
+        </div>
+        <div style="width: 250px">
+        <select [(ngModel)]="methodSelected" (ngModelChange)="onChangeMethod($event)" class="form-control" name="methodSelected">
+        <option value="" disabled> Select an Assessment Method</option>
+        <option *ngFor="let method of methods | async" [value]="method.ID_AS_METHOD">  {{method.NAME}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Date of Collection: </label>
+        </div>
+        <div style="width: 270px">
+          <my-date-picker name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model" (dateChanged)="onDateChanged($event)" required></my-date-picker>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Person in Charge </label>
+        </div>
+        <div style="width: 280px">
+        <select [(ngModel)]="personSelected" (ngModelChange)="onChangePerson($event)" class="form-control" name="personSelected">
+          
+        <option [value]="" disabled> Select a Person In Charge</option>
+        <option *ngFor="let person of professors | async" [value]="person.IdUserCip">  {{person.NameUserCip}}</option>
+        </select>
+      </div>
+    </div>
+
+  <button (click)="myFunc()">Edit</button>
+  <button (click)="deleteAS()">Delete</button>
+  <button (click)="cancelEdit()">Cancel</button>
+  </div>
+</div>
+
+<div>
+  <div *ngIf="newChecked">
+    <h3 class="text-center h3">
+      Add Source of Assessment
+    </h3>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Source: </label>
+        </div>
+        <div style="width: 250px">
         <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="programSelected">
         <option value="" disabled> Select an Assessment Source</option>
         <option *ngFor="let course of MappingCourses" [value]="course.ID_COURSE">  {{course.NAME_COURSE}}  </option>
@@ -129,8 +191,8 @@
       </div>
     </div>
 
-  <button (click)="myFunc()">Edit</button>
-  <button (click)="myFunc()">Delete</button>
+  <button (click)="createNewAssessment()">Create</button>
+  <button (click)="cancelAdd()">Cancel</button>
   </div>
 </div>
 

@@ -49,10 +49,75 @@
 		return piObservable;
 	}
 
-	updateAS(idAsSrc,idCourse,colDate,idMethod,idProf){
-		console.log('http://127.0.0.1:8000/api/updateAS/'+idAsSrc+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf);
-		this.http.get('http://127.0.0.1:8000/api/updateAS/'+idAsSrc+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf).map((response:Response)=> response.json());
+	updateAS(idAsSrc,idCourse,colDate,idMethod,idProf):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/updateAS/'+idAsSrc+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
 	}
+
+	updateAS1(idAsSrc,idCourse):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/updateAS1/'+idAsSrc+'/'+idCourse).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+
+	}
+
+
+	updateAS2(idAsSrc,colDate):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/updateAS2/'+idAsSrc+'/'+colDate).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+
+	}
+
+	updateAS3(idAsSrc,idMethod):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/updateAS3/'+idAsSrc+'/'+idMethod).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+
+	}
+
+	updateAS4(idAsSrc,idProf):any{
+				let obser=this.http.get('http://127.0.0.1:8000/api/updateAS4/'+idAsSrc+'/'+idProf).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+
+	}
+
+	createAS(idPi,idCourse,colDate,idMethod,idProf):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/createAS/'+idPi+'/'+idCourse+'/'+colDate+'/'+idMethod+'/'+idProf).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+	}
+
+	destroy(idAsSrc):any{
+		let obser=this.http.get('http://127.0.0.1:8000/api/destroy/'+idAsSrc).map((response:Response)=> response.json());
+		let retorno:any;
+		obser.subscribe((data)=> {
+			retorno = data;
+				return retorno;
+		});
+
+	}
+
 
 	getCdioByPiId(idPi): CDIOyPI[]{
 		let cdioObservable=this.http.get('http://127.0.0.1:8000/api/getCdioByPiId/'+idPi).map((response:Response)=> response.json());

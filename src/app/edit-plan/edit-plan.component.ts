@@ -28,6 +28,7 @@ export class EditPlanComponent implements OnInit {
 	descriptionPi:string;
   Cdios:CDIOyPI[];
   checked: boolean;
+  newChecked: boolean;
   MappingCourses:CoursesMapping[];
   AssessmentCourses:AssessmentCourse[];
   nameAssessmentSource : string;
@@ -60,28 +61,16 @@ export class EditPlanComponent implements OnInit {
     };
 
     // Initialized to specific date (09.10.2018).
-  public model: any = { date: { year: 2018, month: 10, day: 9 } };
+  public model: any = { date: { year: 2018, month: 5, day: 1 } };
 
 
       settings = {
     mode: 'inline',
-    add: {
-      addButtonContent: '<i class="fas fa-plus"></i>',
-      createButtonContent: '<i class="fas fa-check"></i>',
-      cancelButtonContent: '<i class="fas fa-times"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="fas fa-edit"></i>',
-      saveButtonContent: '<i class="fas fa-check"></i>',
-      cancelButtonContent: '<i class="fas fa-times"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="fas fa-trash" ></i>',
-      confirmDelete: true,
-    },
     actions: {
-      edit: false, //as an example
-      custom: [{ name: 'goTo', title: '<i class="fas fa-edit"></i>' }]
+      edit: false,
+      add:false,
+      delete:false, //as an example
+      custom: [{ name: 'goTo', title: '<i class="fas fa-edit"></i>' }],
     },
     columns: {
       NameAssessmentSource: {
@@ -113,7 +102,8 @@ export class EditPlanComponent implements OnInit {
   ngOnInit() {
 
    this.checked = false;
-   console.log(this.checked);
+   this.newChecked = false;
+   this.selectedDate = "2018-5-1";
 
    this.methods = this.methodsService.allMethods();
    this.professors = this.userService.getAllProfessors();
@@ -158,8 +148,6 @@ export class EditPlanComponent implements OnInit {
 
   onEdit(event): void {
       this.checked = true;
-      console.log(this.checked);
-      console.log(this.AssessmentSources2);
 
       this.currentRow = event.data;
 
@@ -176,8 +164,6 @@ export class EditPlanComponent implements OnInit {
                 this.actualAssessmentCourse = this.AssessmentCourses[i];
                 this.actualIdAsSrc = this.MappingCourses.find(x=>x.NAME_COURSE == this.AssessmentCourses[i].NameAssessmentSource).ID_COURSE;
                 this.actualIndex = i;
-                console.log(this.actualIdAsSrc);
-                console.log(this.actualAssessmentCourse);
                 }
               }
             }
@@ -187,48 +173,55 @@ export class EditPlanComponent implements OnInit {
 
   myFunc(): void{
     this.checked = false;
-    console.log(this.checked);
-    if(this.assessmentSelected != null){
-      console.log(this.assessmentSelected);
-      var assessment:any;
-      assessment = this.MappingCourses.find(x=>x.ID_COURSE == this.assessmentSelected).NAME_COURSE;
-      console.log(assessment);
-      this.AssessmentCourses[this.actualIndex].NameAssessmentSource = assessment;
-    }
-
-    if(this.methodSelected != null){
-      console.log(this.methodSelected);
-      var method:any;
-      method = this.allMethods.find(x=>x.ID_AS_METHOD == this.methodSelected).NAME;
-      console.log(method);
-      this.AssessmentCourses[this.actualIndex].AssessmentMethod = method;
-    }
-
-    if(this.personSelected != null){
-      console.log(this.personSelected);
-      var profe:any;
-      profe = this.allProfessors.find(x=>x.IdUserCip == this.personSelected).NameUserCip;
-      this.AssessmentCourses[this.actualIndex].PersonInCharge = profe;
-    }
-
-    if(this.selectedDate != null){
-      console.log(this.selectedDate);
-      this.AssessmentCourses[this.actualIndex].DateCollection = this.selectedDate+" 00:00:00.000000";
-    }
-
-    console.log(this.AssessmentCourses[this.actualIndex]);
-    this.source.update(this.currentRow,this.currentRow);
-
-    this.actualIdPro = this.allProfessors.find(x=>x.NameUserCip == this.actualAssessmentCourse.PersonInCharge).IdUserCip;
-
-    console.log(this.assessmentSelected);
-    console.log(this.selectedDate);
-    console.log(this.methodSelected);
-    console.log(this.personSelected);
 
     this.actualIdAsSrc1 = this.AssessmentSources2.find(x=>x.COURSE_ID_COURSE == this.actualIdAsSrc).ID_AS_SRC;
 
-    this.planAssessmentService.updateAS(this.actualIdAsSrc1,this.assessmentSelected,this.selectedDate,this.methodSelected,this.personSelected);
+    if(this.assessmentSelected != null){
+      var assessment:any;
+      assessment = this.MappingCourses.find(x=>x.ID_COURSE == this.assessmentSelected).NAME_COURSE;
+      this.AssessmentCourses[this.actualIndex].NameAssessmentSource = assessment;
+      
+      this.planAssessmentService.updateAS1(this.actualIdAsSrc1,this.assessmentSelected);
+    }
+
+    if(this.methodSelected != null){
+      var method:any;
+      method = this.allMethods.find(x=>x.ID_AS_METHOD == this.methodSelected).NAME;
+      this.AssessmentCourses[this.actualIndex].AssessmentMethod = method;
+
+      this.planAssessmentService.updateAS3(this.actualIdAsSrc1,this.methodSelected);
+
+    }
+
+    if(this.personSelected != null){
+      var profe:any;
+      profe = this.allProfessors.find(x=>x.IdUserCip == this.personSelected).NameUserCip;
+      this.AssessmentCourses[this.actualIndex].PersonInCharge = profe;
+      this.planAssessmentService.updateAS4(this.actualIdAsSrc1,this.personSelected);
+
+    }
+
+    if(this.selectedDate != null){
+      this.AssessmentCourses[this.actualIndex].DateCollection = this.selectedDate+" 00:00:00.000000";
+      
+      this.planAssessmentService.updateAS2(this.actualIdAsSrc1,this.selectedDate);
+
+    }
+
+    this.actualIdPro = this.allProfessors.find(x=>x.NameUserCip == this.actualAssessmentCourse.PersonInCharge).IdUserCip;
+                
+    if(this.assessmentSelected == null && this.methodSelected == null && this.personSelected == null && this.selectedDate == null){
+      alert("To edit, please select one option");
+    }
+
+    this.source.update(this.currentRow,this.currentRow);
+
+    this.assessmentSelected = null;
+    this.methodSelected = null;
+    this.personSelected = null;
+    this.selectedDate = "2018-5-1";
+    
+    alert("Assessment Plan Updated");  
   }
 
   onChangeAssessment(newAssessment):void {
@@ -247,7 +240,102 @@ export class EditPlanComponent implements OnInit {
     this.selectedDate = ""+event.date.year+"-"+event.date.month+"-"+event.date.day;
   }
 
+  enableNewAS(){
+    if(this.newChecked != true){
+      this.newChecked = true;
+    }else{
+      this.newChecked = false;
+    }
+    
+  }
 
+  deleteAS():void{
+
+      this.actualIdAsSrc1 = this.AssessmentSources2.find(x=>x.COURSE_ID_COURSE == this.actualIdAsSrc).ID_AS_SRC;
+
+      let idMethod = this.allMethods.find(x=>x.NAME == this.assessmentMethod).ID_AS_METHOD;
+
+      let idProf = this.allProfessors.find(x=>x.NameUserCip.replace(/ /g,'') == this.actualAssessmentCourse.PersonInCharge.replace(/ /g,'')).IdUserCip;
+
+      var AsSrcDelete:AssessmentC;
+
+      AsSrcDelete = this.AssessmentSources2.find(x=>x.ID_AS_SRC == this.actualIdAsSrc1);
+
+      if(AsSrcDelete.USER_CIP_ID_USER == idProf){
+        if(AsSrcDelete.METHOD_ID_AS_METHOD == idMethod){
+          let confirmation = confirm("Confirm deletion of Assessment Source");
+
+          if(confirmation == true){
+            this.planAssessmentService.destroy(this.actualIdAsSrc1);
+            alert("Assessment Plan Deleted")
+          }
+        }
+      }
+
+  }
+
+  createNewAssessment(): void{
+
+    if(this.assessmentSelected != null){
+      var newAS:AssessmentCourse;
+      var assessment:any;
+      assessment = this.MappingCourses.find(x=>x.ID_COURSE == this.assessmentSelected).NAME_COURSE;
+      newAS.NameAssessmentSource = assessment;
+
+      if(this.methodSelected != null){
+        var method:any;
+        method = this.allMethods.find(x=>x.ID_AS_METHOD == this.methodSelected).NAME;
+        newAS.AssessmentMethod = method;
+
+        if(this.personSelected != null){
+          var profe:any;
+          profe = this.allProfessors.find(x=>x.IdUserCip == this.personSelected).NameUserCip;
+          newAS.PersonInCharge = profe;
+
+          if(this.selectedDate != null){
+          newAS.Date = this.selectedDate+" 00:00:00.000000";
+
+          this.newChecked = false;
+
+          this.planAssessmentService.createAS(this.idpi, this.assessmentSelected, this.selectedDate, this.methodSelected, this.personSelected);
+
+          this.source.prepend(newAS);
+
+          alert("Assessment Source Created");
+
+          }else{
+            alert("Please select a collection date")
+          }
+        }else{
+          alert("Please select a person in charge")
+        }
+      }else{
+        alert("Please select a method of assessment")
+      }
+    }else{
+      alert("Please select a Source of Assessment")
+    }
+  }
+
+  cancelAdd(){
+    this.newChecked = false;
+
+    this.assessmentSelected = null;
+    this.methodSelected = null;
+    this.personSelected = null;
+    this.selectedDate = "2018-5-1";
+    this.model = { date: { year: 2018, month: 5, day: 1 } };
+  }
+
+  cancelEdit(){
+    this.checked = false;
+
+    this.assessmentSelected = null;
+    this.methodSelected = null;
+    this.personSelected = null;
+    this.selectedDate = "2018-5-1";
+    this.model = { date: { year: 2018, month: 5, day: 1 } };
+  }
 }
 
 
