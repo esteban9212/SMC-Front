@@ -169,6 +169,7 @@ export class EditPlanComponent implements OnInit {
             }
           }
         }
+
   }
 
   myFunc(): void{
@@ -182,6 +183,8 @@ export class EditPlanComponent implements OnInit {
       this.AssessmentCourses[this.actualIndex].NameAssessmentSource = assessment;
       
       this.planAssessmentService.updateAS1(this.actualIdAsSrc1,this.assessmentSelected);
+          this.source.update(this.currentRow,this.currentRow);
+
     }
 
     if(this.methodSelected != null){
@@ -190,6 +193,8 @@ export class EditPlanComponent implements OnInit {
       this.AssessmentCourses[this.actualIndex].AssessmentMethod = method;
 
       this.planAssessmentService.updateAS3(this.actualIdAsSrc1,this.methodSelected);
+          this.source.update(this.currentRow,this.currentRow);
+
 
     }
 
@@ -198,6 +203,8 @@ export class EditPlanComponent implements OnInit {
       profe = this.allProfessors.find(x=>x.IdUserCip == this.personSelected).NameUserCip;
       this.AssessmentCourses[this.actualIndex].PersonInCharge = profe;
       this.planAssessmentService.updateAS4(this.actualIdAsSrc1,this.personSelected);
+          this.source.update(this.currentRow,this.currentRow);
+
 
     }
 
@@ -205,6 +212,8 @@ export class EditPlanComponent implements OnInit {
       this.AssessmentCourses[this.actualIndex].DateCollection = this.selectedDate+" 00:00:00.000000";
       
       this.planAssessmentService.updateAS2(this.actualIdAsSrc1,this.selectedDate);
+          this.source.update(this.currentRow,this.currentRow);
+
 
     }
 
@@ -213,8 +222,6 @@ export class EditPlanComponent implements OnInit {
     if(this.assessmentSelected == null && this.methodSelected == null && this.personSelected == null && this.selectedDate == null){
       alert("To edit, please select one option");
     }
-
-    this.source.update(this.currentRow,this.currentRow);
 
     this.assessmentSelected = null;
     this.methodSelected = null;
@@ -253,19 +260,35 @@ export class EditPlanComponent implements OnInit {
 
       this.actualIdAsSrc1 = this.AssessmentSources2.find(x=>x.COURSE_ID_COURSE == this.actualIdAsSrc).ID_AS_SRC;
 
+      console.log(this.actualIdAsSrc1);
+
       let idMethod = this.allMethods.find(x=>x.NAME == this.assessmentMethod).ID_AS_METHOD;
 
-      let idProf = this.allProfessors.find(x=>x.NameUserCip.replace(/ /g,'') == this.actualAssessmentCourse.PersonInCharge.replace(/ /g,'')).IdUserCip;
+      console.log(idMethod);
 
       var AsSrcDelete:AssessmentC;
 
       AsSrcDelete = this.AssessmentSources2.find(x=>x.ID_AS_SRC == this.actualIdAsSrc1);
 
+      console.log(AsSrcDelete);
+
+      console.log(this.actualAssessmentCourse);
+      console.log(this.allProfessors);
+
+      let idProf = this.allProfessors.find(x=>x.NameUserCip.replace(/ /g,'') == this.actualAssessmentCourse.PersonInCharge.replace(/ /g,'')).IdUserCip;
+
+      console.log(AsSrcDelete.USER_CIP_ID_USER);
+
+      console.log(idProf);
+
       if(AsSrcDelete.USER_CIP_ID_USER == idProf){
+        console.log("Entro");
         if(AsSrcDelete.METHOD_ID_AS_METHOD == idMethod){
           let confirmation = confirm("Confirm deletion of Assessment Source");
-
+          console.log("Entro");
           if(confirmation == true){
+            this.AssessmentCourses.splice(this.actualIndex,1);
+            this.source.update(this.currentRow,this.currentRow);
             this.planAssessmentService.destroy(this.actualIdAsSrc1);
             alert("Assessment Plan Deleted")
           }
