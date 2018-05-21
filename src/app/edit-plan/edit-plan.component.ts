@@ -184,7 +184,7 @@ export class EditPlanComponent implements OnInit {
       
       this.planAssessmentService.updateAS1(this.actualIdAsSrc1,this.assessmentSelected);
           this.source.update(this.currentRow,this.currentRow);
-
+    alert("Assessment Plan Updated"); 
     }
 
     if(this.methodSelected != null){
@@ -195,7 +195,7 @@ export class EditPlanComponent implements OnInit {
       this.planAssessmentService.updateAS3(this.actualIdAsSrc1,this.methodSelected);
           this.source.update(this.currentRow,this.currentRow);
 
-
+    alert("Assessment Plan Updated"); 
     }
 
     if(this.personSelected != null){
@@ -205,7 +205,7 @@ export class EditPlanComponent implements OnInit {
       this.planAssessmentService.updateAS4(this.actualIdAsSrc1,this.personSelected);
           this.source.update(this.currentRow,this.currentRow);
 
-
+    alert("Assessment Plan Updated"); 
     }
 
     if(this.selectedDate != null){
@@ -214,7 +214,7 @@ export class EditPlanComponent implements OnInit {
       this.planAssessmentService.updateAS2(this.actualIdAsSrc1,this.selectedDate);
           this.source.update(this.currentRow,this.currentRow);
 
-
+    alert("Assessment Plan Updated"); 
     }
 
     this.actualIdPro = this.allProfessors.find(x=>x.NameUserCip == this.actualAssessmentCourse.PersonInCharge).IdUserCip;
@@ -290,7 +290,9 @@ export class EditPlanComponent implements OnInit {
             this.AssessmentCourses.splice(this.actualIndex,1);
             this.source.update(this.currentRow,this.currentRow);
             this.planAssessmentService.destroy(this.actualIdAsSrc1);
+            this.source.update(this.currentRow,this.currentRow);
             alert("Assessment Plan Deleted")
+            window.location.reload();
           }
         }
       }
@@ -300,7 +302,7 @@ export class EditPlanComponent implements OnInit {
   createNewAssessment(): void{
 
     if(this.assessmentSelected != null){
-      var newAS:AssessmentCourse;
+      var newAS = new AssessmentCourse("", "", "", "", "");
       var assessment:any;
       assessment = this.MappingCourses.find(x=>x.ID_COURSE == this.assessmentSelected).NAME_COURSE;
       newAS.NameAssessmentSource = assessment;
@@ -323,6 +325,10 @@ export class EditPlanComponent implements OnInit {
           this.planAssessmentService.createAS(this.idpi, this.assessmentSelected, this.selectedDate, this.methodSelected, this.personSelected);
 
           this.source.prepend(newAS);
+
+          this.source.update(this.currentRow,this.currentRow);
+
+          window.location.reload();
 
           alert("Assessment Source Created");
 
