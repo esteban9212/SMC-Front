@@ -24,6 +24,9 @@
 
 		<thead>
 			<tr>
+				<th style="width: 1%">
+					Action
+				</th>
 				<th style="width: 3%">
 					Performance Indicator
 				</th>
@@ -39,15 +42,17 @@
 				<th style="width: 1%">
 					Evaluation date
 				</th>
-				<th style="width: 1%">
-					Action
-				</th>
-				
 			</tr>
 
 		</thead>
 		<tbody>
 			<tr *ngFor="let pi of pis">
+
+
+			<td style="text-align: center; vertical-align: middle;">
+			  <button type="button" class="btn btn-primary" style="display: inline-block;" (click)="editRow(pi);"> <i class="fas fa-edit"></i>Edit</button> 
+			</td>
+
 				<td class="text-right">{{pi.CodePi}} {{pi.DescriptionPi}}</td>
 
 
@@ -77,9 +82,6 @@
 			<p>{{evaluation}}</p>
 			</td>
 
-			<td class="text-right">
-			  <button type="button" class="btn btn-primary" (click)="editRow(pi);">Edit</button> 
-			</td>
 
 			</tr>
 
