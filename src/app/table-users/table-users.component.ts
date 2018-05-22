@@ -60,7 +60,7 @@ export class TableUsersComponent implements OnInit {
     },
     actions: {
       edit: false, //as an example
-      custom: [{ name: 'goTo', title: '<i class="fas fa-edit"></i>' }]
+      custom: [{ name: 'goTo', title: '<i class="fas fa-arrow-alt-circle-right"></i>' }]
     },
     columns: {
       IdUserCip: {
@@ -145,6 +145,10 @@ export class TableUsersComponent implements OnInit {
 		console.log(this.outcomeSelected);
 		console.log(this.userId);
 	}
+
+  onUserRowSelect(event): void {
+    console.log(event);
+}
 
 
 

@@ -49,7 +49,7 @@
 
 
 <div class="col-md-12 tabla">
-  <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)"></ng2-smart-table>
+  <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)" (userRowSelect)="onUserRowSelect($event)"></ng2-smart-table>
 </div>
 <app-menu></app-menu>
 <router-outlet></router-outlet>
