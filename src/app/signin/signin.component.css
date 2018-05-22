@@ -3,6 +3,11 @@
   width: 100%;
   height: 100%;
   background-color: #2E86C1; 
+      background-image: url("assets/img/saman_slider.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .form-signin {
@@ -15,9 +20,9 @@
         top:50%;
   transform: translate(-50%, -50%);
   
-  padding: 15px 35px 45px;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
+  padding: 15px 35px 45px;;
+  background-color:transparent;
+  border: 1px solid rgba(0,0,0,0.1);
 
     .form-control {
           -webkit-border-radius: 4px;
