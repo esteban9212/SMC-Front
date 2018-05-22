@@ -14,7 +14,7 @@
 <tr *ngFor="let item of Pi.AssessmentCourses">
 	<td class="text-right">{{item.NameAssessmentSource}} </td>
 	<td class="text-right">{{item.AssessmentMethod}} </td>
-	<td class="text-right">{{item.DateCollection.date}} </td>
+	<td class="text-right">{{item.DateCollection.date | date}} </td>
 	<td class="text-right">{{item.PersonInCharge}} </td>
 
 
