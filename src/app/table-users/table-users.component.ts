@@ -148,6 +148,9 @@ export class TableUsersComponent implements OnInit {
 
   onUserRowSelect(event): void {
     console.log(event);
+    
+    this.userName=event.data.NameUserCip;
+    this.userId=event.data.IdUserCip;
 }
 
 

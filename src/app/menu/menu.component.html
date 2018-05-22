@@ -1,47 +1,67 @@
-<div class="fondo">
+
+  <div class="fondo">
+
 
   <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light navbar-default">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+        <a title="Universidad Icesi" href="http://www.icesi.edu.co"><img src="http://www.icesi.edu.co/images/logo.png" alt="Los Tejos" /></a>
+        <h3 class="cicloactual"> Current Cycle: 2-1 </h3>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <li class="nav-item" routerLinkActive="active">
-          <a title="Universidad Icesi" href="http://www.icesi.edu.co"><img src="http://www.icesi.edu.co/images/logo.png" alt="Los Tejos" /></a>
-        </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav mr-auto emenu">
 
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/home">Home </a>
-        </li>
-        <div *ngIf="noShow; else elseBlock"></div>
-          <ng-template #elseBlock>
-           <li class="nav-item" routerLinkActive="active">
-               <a class="nav-link" routerLink="/assign">Assign Outcomes</a>
-            </li>
-          </ng-template>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="/create">Create Assessment</a>
-        </li>
-      </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-      <li><a class="nav-link"><span class="glyphicon glyphicon-user"></span> {{user.NAME_USER}} {{user.LAST_NAME}}</a></li>
-      <li><a href="javascript:void(0)" class="nav-link" (click)="logout()">Logout</a></li>
-    </ul>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/home"><h4 class="itemMenu">Home</h4> </a>
+              </li>
+              <div *ngIf="noShow; else elseBlock"></div>
+                <ng-template #elseBlock>
+                 <li class="nav-item" routerLinkActive="active">
+                     <a class="nav-link" routerLink="/assign"><h4 class="itemMenu">Assign Outcomes</h4> </a>
+                  </li>
+                </ng-template>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="/create"><h4 class="itemMenu">Create Assessment</h4></a>
+              </li>
 
-    </div>
+                
+            </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <li class="nav-item dropdown option">
+              <a class="nav-link dropdown-toggle nada" href="#" id="navbardrop" data-toggle="dropdown">
+<img style="width: 50px; height:50px" class="navbar-brand" src="https://sportafolio.com/wp-content/themes/fivehundred-stellar/images/perfil/perfil.png" alt="logo">
+            </a>
+                <div class="dropdown-menu azul">
+                  <a class="nav-link"><h6 class="nombre"> {{user.NAME_USER}} {{user.LAST_NAME}}</h6></a>
+                  <a href="javascript:void(0)" class="nav-link" (click)="logout()"><h6> Logout</h6></a>
+                </div>
+           </li>
+
+          </form>
+
+
+        </div>
+
 
   </nav>
 
-</div>
-<div class="menu-espacio">
-  
-</div>
 
-<!--Contenido-->
-<router-outlet></router-outlet>
 
-<!--Footer-->
-<footer class="page-footer font-small blue pt-4 mt-4 bg-light">
+
+
+  </div>
+  <div class="menu-espacio">
+
+  </div>
+
+  <!--Contenido-->
+  <router-outlet></router-outlet>
+
+  <!--Footer-->
+  <footer class="page-footer font-small blue pt-4 mt-4 bg-light">
 
   <div class="container-fluid text-center text-md-left">
     <div class="row">
@@ -88,14 +108,14 @@
 
 
   </div>
-</div>
+  </div>
 
-<!--Copyright-->
-<div class="footer-copyright py-3 text-center">Copyright © 2018:
+  <!--Copyright-->
+  <div class="footer-copyright py-3 text-center">Copyright © 2018:
   <a href="http://www.icesi.edu.co"> icesi.edu.co </a>
-</div>
-<!--/.Copyright-->
+  </div>
+  <!--/.Copyright-->
 
-</footer>
-<!--/.Footer-->
+  </footer>
+  <!--/.Footer-->
 

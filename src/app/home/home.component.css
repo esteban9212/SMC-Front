@@ -14,3 +14,8 @@ h1.text-center.h1 {
     margin-top: 15px;
     padding-top: 78px;
 }
+
+ul.nav.navbar-nav.navbar-right:hover {
+    background: red !important;
+    height: auto !important;
+}

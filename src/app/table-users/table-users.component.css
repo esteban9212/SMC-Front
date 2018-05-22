@@ -57,3 +57,11 @@ h4 {
 input.btn.light-blue.boton {
     margin-bottom: 15px;
 }
+
+tr:hover {
+    background: gray !important;
+}
+
+:host /deep/ ng2-smart-table tbody > tr:hover { 
+    background-color: rgba(0,0,0,.05); 
+}

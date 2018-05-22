@@ -22,7 +22,6 @@ a {
 
 a.nav-link:hover {
     background: #004E9B ;
-    height: 64px;
 }
 a.linkFooter {
     font-size: initial;
@@ -48,12 +47,14 @@ div>ul>li>h5 {
 }
 
 li.nav-item.active {
-    text-decoration: underline;
+
+    border-radius: 5px;
+    border: 2px solid white !important;
+    color: #00599c !important;
+    height: 72px;
+
 
 }
-
-
-
 #navbarSupportedContent ul
 {
     margin: 0;
@@ -65,6 +66,49 @@ li.nav-item.active {
     list-style-type: none;
     display: inline;
 }
+
+.cicloactual{
+          border-radius: 38px;
+    border: 1px solid #0FB066 !important;
+    padding: 8px 10px !important;
+    margin-top: 12px;
+    text-transform: capitalize !important;
+        margin-right: 5px;
+}
+
+.itemMenu{
+
+    padding: 8px 10px !important;
+    margin-top: 12px;
+    text-transform: capitalize !important;
+}
+
+nav.fixed-top.navbar.navbar-expand-lg.navbar-light.bg-light.navbar-default {
+    padding-bottom: 0px;
+    border-top-width: 0px;
+    padding-top: 0px;
+}
+
+a.nav-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.azul{
+    background: #00599c;
+    width: -webkit-fill-available;
+}
+.nombre{
+    color: white;
+}
+.option{
+list-style:none
+}
+
+.nada{
+    text-decoration: none !important;
+}
+
+
 
 
 
