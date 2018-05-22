@@ -39,7 +39,7 @@
   </h3>
 
   <div class="form-group">
-      <button (click)="enableNewAS()"><i class="fas fa-plus"></i> Add Source of Assessment</button>
+      <button class="btn light-blue boton" (click)="enableNewAS()"><i class="fas fa-plus"></i> Add Source of Assessment</button>
   </div> 
 
   <ng2-smart-table [settings]="settings" [source]="source" (custom)="onEdit($event)"></ng2-smart-table>
@@ -47,7 +47,7 @@
 
   <hr>
 
-  <div *ngIf="checked">
+  <div style="margin-left: auto; margin-right: auto; width: 40em" *ngIf="checked">
     
     <h3 class="text-center h3">
       Edit Source of Assessment
@@ -81,120 +81,130 @@
       </div>
     </div>
 
-  </div>
+      <form>
 
-  <hr>
-
-<div>
-  <div *ngIf="checked">
-    <div class="input-group mb-3">
+      <label>Select an assessment source: </label>
+      
+      <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Assessment Source: </label>
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Source</label>
         </div>
-        <div style="width: 250px">
         <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="assessmentSelected">
         <option value="" disabled> Select an Assessment Source</option>
         <option *ngFor="let course of MappingCourses" [value]="course.ID_COURSE">  {{course.NAME_COURSE}}  </option>
         </select>
-      </div>
-    </div>
+     </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Assessment Method: </label>
-        </div>
-        <div style="width: 250px">
+     <label>Select an assessment method</label>
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Assessment Method</label>
+      </div>
         <select [(ngModel)]="methodSelected" (ngModelChange)="onChangeMethod($event)" class="form-control" name="methodSelected">
         <option value="" disabled> Select an Assessment Method</option>
         <option *ngFor="let method of methods | async" [value]="method.ID_AS_METHOD">  {{method.NAME}}</option>
         </select>
-      </div>
     </div>
 
-    <div class="input-group mb-3">
+     <label>Select a date of collection</label>
+      
+      <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Date of Collection: </label>
+          <label class="input-group-text" for="inputGroupSelect01">Date of Collection</label>
         </div>
-        <div style="width: 270px">
+        <div style="width: 485px">
           <my-date-picker name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model" (dateChanged)="onDateChanged($event)" required></my-date-picker>
         </div>
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Person in Charge </label>
         </div>
-        <div style="width: 280px">
+
+    <label>Select a person in charge</label>
+
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Person in Charge</label>
+      </div>
         <select [(ngModel)]="personSelected" (ngModelChange)="onChangePerson($event)" class="form-control" name="personSelected">
           
-        <option [value]="" disabled> Select a Person In Charge</option>
+        <option [value]="" disabled> Select a Person in Charge</option>
         <option *ngFor="let person of professors | async" [value]="person.IdUserCip">  {{person.NameUserCip}}</option>
         </select>
-      </div>
     </div>
 
-  <button (click)="myFunc()">Edit</button>
-  <button (click)="deleteAS()">Delete</button>
-  <button (click)="cancelEdit()">Cancel</button>
-  </div>
-</div>
+    <div class="padre">
+          <button class="btn light-blue boton " (click)="myFunc()">Edit</button>
+          <button class="btn light-blue boton " (click)="deleteAS()">Delete</button>
+          <button class="btn light-blue boton " (click)="cancelEdit()">Cancel</button> 
+    </div>
+  </form>
 
-<div>
-  <div *ngIf="newChecked">
+  </div>
+
+  <hr>
+
+
+  <div style="margin-left: auto; margin-right: auto; width: 40em" *ngIf="newChecked">
     <h3 class="text-center h3">
       Add Source of Assessment
     </h3>
 
-    <div class="input-group mb-3">
+      <form>
+
+      <label>Select an assessment source: </label>
+      
+      <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Assessment Source: </label>
+          <label class="input-group-text" for="inputGroupSelect01">Assessment Source</label>
         </div>
-        <div style="width: 250px">
-        <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="programSelected">
+        <select [(ngModel)]="assessmentSelected" (ngModelChange)="onChangeAssessment($event)" class="form-control" name="assessmentSelected">
         <option value="" disabled> Select an Assessment Source</option>
         <option *ngFor="let course of MappingCourses" [value]="course.ID_COURSE">  {{course.NAME_COURSE}}  </option>
         </select>
-      </div>
-    </div>
+     </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Assessment Method: </label>
-        </div>
-        <div style="width: 250px">
-        <select [(ngModel)]="methodSelected" (ngModelChange)="onChangeMethod($event)" class="form-control" name="programSelected">
+     <label>Select an assessment method</label>
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Assessment Method</label>
+      </div>
+        <select [(ngModel)]="methodSelected" (ngModelChange)="onChangeMethod($event)" class="form-control" name="methodSelected">
         <option value="" disabled> Select an Assessment Method</option>
         <option *ngFor="let method of methods | async" [value]="method.ID_AS_METHOD">  {{method.NAME}}</option>
         </select>
-      </div>
     </div>
 
-    <div class="input-group mb-3">
+     <label>Select a date of collection</label>
+      
+      <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Date of Collection: </label>
+          <label class="input-group-text" for="inputGroupSelect01">Date of Collection</label>
         </div>
-        <div style="width: 270px">
+        <div style="width: 485px">
           <my-date-picker name="mydate" [options]="myDatePickerOptions"[(ngModel)]="model" (dateChanged)="onDateChanged($event)" required></my-date-picker>
         </div>
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Person in Charge </label>
         </div>
-        <div style="width: 280px">
-        <select [(ngModel)]="personSelected" (ngModelChange)="onChangePerson($event)" class="form-control" name="programSelected">
+
+    <label>Select a person in charge</label>
+
+     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Person in Charge</label>
+      </div>
+        <select [(ngModel)]="personSelected" (ngModelChange)="onChangePerson($event)" class="form-control" name="personSelected">
           
-        <option value="" disabled> Select a Person In Charge</option>
+        <option [value]="" disabled> Select a Person in Charge</option>
         <option *ngFor="let person of professors | async" [value]="person.IdUserCip">  {{person.NameUserCip}}</option>
         </select>
-      </div>
     </div>
 
-  <button (click)="createNewAssessment()">Create</button>
-  <button (click)="cancelAdd()">Cancel</button>
+    <div class="padre">
+        <button class="btn light-blue boton " (click)="createNewAssessment()">Create</button>
+        <button class="btn light-blue boton " (click)="cancelAdd()">Cancel</button>
+    </div>
+  </form>
+
+
   </div>
-</div>
+
 
 <app-menu></app-menu>
 <router-outlet></router-outlet>
