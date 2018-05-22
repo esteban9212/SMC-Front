@@ -14,6 +14,7 @@ export class SigninComponent implements OnInit{
 
   userLogin:User;
   tokenData;
+  error;
 
   constructor(private authService: AuthService, private router: Router) { 
     this.userLogin = {'ID_USER':"", 'NAME_USER':'','LAST_NAME':'','EMAIL':'', 'IDENTIFICATION':'', 'LOGIN':'', 'PASSWORD_USER':'', 'STATE_ID_STATE':''};
@@ -26,11 +27,21 @@ export class SigninComponent implements OnInit{
   	this.authService.signin(this.userLogin.LOGIN, this.userLogin.PASSWORD_USER)
   	.subscribe(
   		tokenData => this.tokenData = tokenData,
-  		error => console.log(error),
+  		error => this.messageError(error),
+      () => this.redirectToHome(),
   		);
+  }
 
+  redirectToHome(){
     if(this.tokenData != null){
        this.router.navigate(['/home']);
+    }
+  }
+
+  messageError(error:any){
+    console.log(error);
+    if(error != null){
+      alert("Invalid login or password. Try again");
     }
   }
 

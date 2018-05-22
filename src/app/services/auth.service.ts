@@ -30,7 +30,8 @@ export class AuthService {
 					localStorage.setItem('token_type', tokenData.token_type);
 					localStorage.setItem('expires_in', tokenData.expires_in);
 					localStorage.setItem('user', JSON.stringify(tokenData.user));
-				});
+				})
+			;
 	}
 
 
