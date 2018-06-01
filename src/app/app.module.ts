@@ -31,7 +31,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditPlanComponent } from './edit-plan/edit-plan.component';
 import { TableUsersComponent } from './table-users/table-users.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MethodService } from './services/method.service';
 import { MyDatePickerModule } from 'mydatepicker';
 
